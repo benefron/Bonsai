@@ -1,0 +1,69 @@
+{
+  "format": 1,
+  "restore": {
+    "c:\\Users\\Lampllab\\Bonsai\\Extensions.csproj": {}
+  },
+  "projects": {
+    "c:\\Users\\Lampllab\\Bonsai\\Extensions.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "c:\\Users\\Lampllab\\Bonsai\\Extensions.csproj",
+        "projectName": "Extensions",
+        "projectPath": "c:\\Users\\Lampllab\\Bonsai\\Extensions.csproj",
+        "packagesPath": "C:\\Users\\Lampllab\\.nuget\\packages\\",
+        "outputPath": "c:\\Users\\Lampllab\\Bonsai\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Microsoft\\Xamarin\\NuGet\\"
+        ],
+        "configFilePaths": [
+          "c:\\Users\\Lampllab\\Bonsai\\NuGet.Config",
+          "C:\\Users\\Lampllab\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net472"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Users\\Lampllab\\source\\repos\\BonsaiPackage1": {},
+          "https://api.nuget.org/v3/index.json": {},
+          "https://www.myget.org/f/bonsai": {},
+          "https://www.myget.org/f/bonsai-community": {}
+        },
+        "frameworks": {
+          "net472": {
+            "targetAlias": "net472",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net472": {
+          "targetAlias": "net472",
+          "dependencies": {
+            "Bonsai.Core": {
+              "target": "Package",
+              "version": "[2.5.1, )"
+            },
+            "Bonsai.Vision": {
+              "target": "Package",
+              "version": "[2.5.1, )"
+            },
+            "openCV.Net": {
+              "target": "Package",
+              "version": "[3.3.1, )"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.101\\RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

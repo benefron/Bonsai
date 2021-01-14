@@ -1,0 +1,18 @@
+{
+  "version": 2,
+  "dgSpecHash": "UKQSsnw/iGIpCYv3GkaN/1aRmurntzylM9tAGX3eNeeb37aBawXJDqOyQL+gm/04XHNCXbsD47U7j7YJRqU5sQ==",
+  "success": true,
+  "projectFilePath": "c:\\Users\\Lampllab\\Bonsai\\Extensions.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Lampllab\\.nuget\\packages\\bonsai.core\\2.5.1\\bonsai.core.2.5.1.nupkg.sha512",
+    "C:\\Users\\Lampllab\\.nuget\\packages\\bonsai.dsp\\2.5.0\\bonsai.dsp.2.5.0.nupkg.sha512",
+    "C:\\Users\\Lampllab\\.nuget\\packages\\bonsai.system\\2.5.1\\bonsai.system.2.5.1.nupkg.sha512",
+    "C:\\Users\\Lampllab\\.nuget\\packages\\bonsai.vision\\2.5.1\\bonsai.vision.2.5.1.nupkg.sha512",
+    "C:\\Users\\Lampllab\\.nuget\\packages\\opencv.net\\3.3.1\\opencv.net.3.3.1.nupkg.sha512",
+    "C:\\Users\\Lampllab\\.nuget\\packages\\rx-core\\2.2.5\\rx-core.2.2.5.nupkg.sha512",
+    "C:\\Users\\Lampllab\\.nuget\\packages\\rx-interfaces\\2.2.5\\rx-interfaces.2.2.5.nupkg.sha512",
+    "C:\\Users\\Lampllab\\.nuget\\packages\\rx-linq\\2.2.5\\rx-linq.2.2.5.nupkg.sha512",
+    "C:\\Users\\Lampllab\\.nuget\\packages\\rx-platformservices\\2.2.5\\rx-platformservices.2.2.5.nupkg.sha512"
+  ],
+  "logs": []
+}
