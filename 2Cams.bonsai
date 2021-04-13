@@ -2,9 +2,9 @@
 <WorkflowBuilder Version="2.6.0"
                  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
                  xmlns:rx="clr-namespace:Bonsai.Reactive;assembly=Bonsai.Core"
+                 xmlns:p1="clr-namespace:;assembly=Extensions"
                  xmlns:vid="clr-namespace:Bonsai.Video;assembly=Bonsai.Video"
                  xmlns:cv="clr-namespace:Bonsai.Vision;assembly=Bonsai.Vision"
-                 xmlns:p1="clr-namespace:;assembly=Extensions"
                  xmlns:scr="clr-namespace:Bonsai.Scripting;assembly=Bonsai.Scripting"
                  xmlns:io="clr-namespace:Bonsai.IO;assembly=Bonsai.System"
                  xmlns:sys="clr-namespace:System;assembly=mscorlib"
@@ -56,10 +56,26 @@
                             <rx:DueTime>PT1S</rx:DueTime>
                           </Combinator>
                         </Expression>
+                        <Expression xsi:type="SubscribeSubject">
+                          <Name>Cam1FPS</Name>
+                        </Expression>
+                        <Expression xsi:type="PropertyMapping">
+                          <PropertyMappings>
+                            <Property Name="Fps" />
+                          </PropertyMappings>
+                        </Expression>
+                        <Expression xsi:type="SubscribeSubject">
+                          <Name>Cam1Indaex</Name>
+                        </Expression>
+                        <Expression xsi:type="PropertyMapping">
+                          <PropertyMappings>
+                            <Property Name="Index" />
+                          </PropertyMappings>
+                        </Expression>
                         <Expression xsi:type="Combinator">
                           <Combinator xsi:type="p1:FpsCameraCapture">
-                            <p1:Index>1</p1:Index>
-                            <p1:Fps>300</p1:Fps>
+                            <p1:Index>2</p1:Index>
+                            <p1:Fps>400</p1:Fps>
                             <p1:Settings>0</p1:Settings>
                           </Combinator>
                         </Expression>
@@ -108,13 +124,17 @@
                       </Nodes>
                       <Edges>
                         <Edge From="0" To="1" Label="Source1" />
-                        <Edge From="1" To="7" Label="Source2" />
+                        <Edge From="1" To="11" Label="Source2" />
                         <Edge From="2" To="3" Label="Source1" />
-                        <Edge From="3" To="4" Label="Source1" />
+                        <Edge From="3" To="6" Label="Source1" />
                         <Edge From="4" To="5" Label="Source1" />
-                        <Edge From="5" To="6" Label="Source1" />
+                        <Edge From="5" To="6" Label="Source2" />
                         <Edge From="6" To="7" Label="Source1" />
                         <Edge From="7" To="8" Label="Source1" />
+                        <Edge From="8" To="9" Label="Source1" />
+                        <Edge From="9" To="10" Label="Source1" />
+                        <Edge From="10" To="11" Label="Source1" />
+                        <Edge From="11" To="12" Label="Source1" />
                       </Edges>
                     </Workflow>
                   </Expression>
@@ -350,6 +370,14 @@ def process(value):
                 <Property Name="FourCC" />
               </PropertyMappings>
             </Expression>
+            <Expression xsi:type="SubscribeSubject">
+              <Name>Cam1FPS</Name>
+            </Expression>
+            <Expression xsi:type="PropertyMapping">
+              <PropertyMappings>
+                <Property Name="FrameRate" />
+              </PropertyMappings>
+            </Expression>
             <Expression xsi:type="Combinator">
               <Combinator xsi:type="cv:VideoWriter">
                 <cv:FileName>D:\test\un_14_1_2021_400FPS_.avi</cv:FileName>
@@ -378,11 +406,11 @@ def process(value):
             <Edge From="1" To="3" Label="Source1" />
             <Edge From="2" To="3" Label="Source2" />
             <Edge From="2" To="22" Label="Source2" />
-            <Edge From="3" To="26" Label="Source1" />
+            <Edge From="3" To="28" Label="Source1" />
             <Edge From="4" To="5" Label="Source1" />
             <Edge From="5" To="21" Label="Source1" />
             <Edge From="6" To="23" Label="Source2" />
-            <Edge From="6" To="27" Label="Source2" />
+            <Edge From="6" To="29" Label="Source2" />
             <Edge From="7" To="14" Label="Source3" />
             <Edge From="8" To="18" Label="Source3" />
             <Edge From="9" To="10" Label="Source1" />
@@ -392,7 +420,7 @@ def process(value):
             <Edge From="13" To="14" Label="Source2" />
             <Edge From="14" To="15" Label="Source1" />
             <Edge From="15" To="16" Label="Source1" />
-            <Edge From="16" To="26" Label="Source2" />
+            <Edge From="16" To="28" Label="Source2" />
             <Edge From="17" To="18" Label="Source2" />
             <Edge From="18" To="19" Label="Source1" />
             <Edge From="19" To="20" Label="Source1" />
@@ -400,9 +428,11 @@ def process(value):
             <Edge From="21" To="22" Label="Source1" />
             <Edge From="22" To="23" Label="Source1" />
             <Edge From="24" To="25" Label="Source1" />
-            <Edge From="25" To="26" Label="Source3" />
+            <Edge From="25" To="28" Label="Source3" />
             <Edge From="26" To="27" Label="Source1" />
+            <Edge From="27" To="28" Label="Source4" />
             <Edge From="28" To="29" Label="Source1" />
+            <Edge From="30" To="31" Label="Source1" />
           </Edges>
         </Workflow>
       </Expression>
@@ -542,10 +572,26 @@ def process(value):
                             <rx:DueTime>PT1S</rx:DueTime>
                           </Combinator>
                         </Expression>
+                        <Expression xsi:type="SubscribeSubject">
+                          <Name>Cam2FPS</Name>
+                        </Expression>
+                        <Expression xsi:type="PropertyMapping">
+                          <PropertyMappings>
+                            <Property Name="Fps" />
+                          </PropertyMappings>
+                        </Expression>
+                        <Expression xsi:type="SubscribeSubject">
+                          <Name>Cam2Index</Name>
+                        </Expression>
+                        <Expression xsi:type="PropertyMapping">
+                          <PropertyMappings>
+                            <Property Name="Index" />
+                          </PropertyMappings>
+                        </Expression>
                         <Expression xsi:type="Combinator">
                           <Combinator xsi:type="p1:FpsCameraCapture">
                             <p1:Index>1</p1:Index>
-                            <p1:Fps>300</p1:Fps>
+                            <p1:Fps>100</p1:Fps>
                             <p1:Settings>0</p1:Settings>
                           </Combinator>
                         </Expression>
@@ -594,13 +640,17 @@ def process(value):
                       </Nodes>
                       <Edges>
                         <Edge From="0" To="1" Label="Source1" />
-                        <Edge From="1" To="7" Label="Source2" />
+                        <Edge From="1" To="11" Label="Source2" />
                         <Edge From="2" To="3" Label="Source1" />
-                        <Edge From="3" To="4" Label="Source1" />
+                        <Edge From="3" To="6" Label="Source1" />
                         <Edge From="4" To="5" Label="Source1" />
-                        <Edge From="5" To="6" Label="Source1" />
+                        <Edge From="5" To="6" Label="Source2" />
                         <Edge From="6" To="7" Label="Source1" />
                         <Edge From="7" To="8" Label="Source1" />
+                        <Edge From="8" To="9" Label="Source1" />
+                        <Edge From="9" To="10" Label="Source1" />
+                        <Edge From="10" To="11" Label="Source1" />
+                        <Edge From="11" To="12" Label="Source1" />
                       </Edges>
                     </Workflow>
                   </Expression>
@@ -836,6 +886,14 @@ def process(value):
                 <Property Name="FourCC" />
               </PropertyMappings>
             </Expression>
+            <Expression xsi:type="SubscribeSubject">
+              <Name>Cam2FPS</Name>
+            </Expression>
+            <Expression xsi:type="PropertyMapping">
+              <PropertyMappings>
+                <Property Name="FrameRate" />
+              </PropertyMappings>
+            </Expression>
             <Expression xsi:type="Combinator">
               <Combinator xsi:type="cv:VideoWriter">
                 <cv:FileName>D:\test\un_14_1_2021_100FPS_.avi</cv:FileName>
@@ -864,11 +922,11 @@ def process(value):
             <Edge From="1" To="3" Label="Source1" />
             <Edge From="2" To="3" Label="Source2" />
             <Edge From="2" To="18" Label="Source2" />
-            <Edge From="3" To="26" Label="Source1" />
+            <Edge From="3" To="28" Label="Source1" />
             <Edge From="4" To="5" Label="Source1" />
             <Edge From="5" To="17" Label="Source1" />
             <Edge From="6" To="19" Label="Source2" />
-            <Edge From="6" To="27" Label="Source2" />
+            <Edge From="6" To="29" Label="Source2" />
             <Edge From="7" To="21" Label="Source3" />
             <Edge From="8" To="14" Label="Source3" />
             <Edge From="9" To="10" Label="Source1" />
@@ -884,11 +942,13 @@ def process(value):
             <Edge From="20" To="21" Label="Source2" />
             <Edge From="21" To="22" Label="Source1" />
             <Edge From="22" To="23" Label="Source1" />
-            <Edge From="23" To="26" Label="Source2" />
+            <Edge From="23" To="28" Label="Source2" />
             <Edge From="24" To="25" Label="Source1" />
-            <Edge From="25" To="26" Label="Source3" />
+            <Edge From="25" To="28" Label="Source3" />
             <Edge From="26" To="27" Label="Source1" />
+            <Edge From="27" To="28" Label="Source4" />
             <Edge From="28" To="29" Label="Source1" />
+            <Edge From="30" To="31" Label="Source1" />
           </Edges>
         </Workflow>
       </Expression>
@@ -925,6 +985,50 @@ def process(value):
       <Expression xsi:type="BehaviorSubject">
         <Name>Codec</Name>
       </Expression>
+      <Expression xsi:type="ExternalizedMapping">
+        <Property Name="Value" DisplayName="Cam1 FPS" />
+      </Expression>
+      <Expression xsi:type="Combinator">
+        <Combinator xsi:type="IntProperty">
+          <Value>400</Value>
+        </Combinator>
+      </Expression>
+      <Expression xsi:type="BehaviorSubject">
+        <Name>Cam1FPS</Name>
+      </Expression>
+      <Expression xsi:type="ExternalizedMapping">
+        <Property Name="Value" DisplayName="Cam2 FPS" />
+      </Expression>
+      <Expression xsi:type="Combinator">
+        <Combinator xsi:type="IntProperty">
+          <Value>100</Value>
+        </Combinator>
+      </Expression>
+      <Expression xsi:type="BehaviorSubject">
+        <Name>Cam2FPS</Name>
+      </Expression>
+      <Expression xsi:type="ExternalizedMapping">
+        <Property Name="Value" DisplayName="Cam1 index" />
+      </Expression>
+      <Expression xsi:type="Combinator">
+        <Combinator xsi:type="IntProperty">
+          <Value>2</Value>
+        </Combinator>
+      </Expression>
+      <Expression xsi:type="BehaviorSubject">
+        <Name>Cam1Indaex</Name>
+      </Expression>
+      <Expression xsi:type="ExternalizedMapping">
+        <Property Name="Value" DisplayName="Cam2 index" />
+      </Expression>
+      <Expression xsi:type="Combinator">
+        <Combinator xsi:type="IntProperty">
+          <Value>1</Value>
+        </Combinator>
+      </Expression>
+      <Expression xsi:type="BehaviorSubject">
+        <Name>Cam2Index</Name>
+      </Expression>
     </Nodes>
     <Edges>
       <Edge From="1" To="2" Label="Source1" />
@@ -939,6 +1043,14 @@ def process(value):
       <Edge From="16" To="17" Label="Source1" />
       <Edge From="18" To="19" Label="Source1" />
       <Edge From="19" To="20" Label="Source1" />
+      <Edge From="21" To="22" Label="Source1" />
+      <Edge From="22" To="23" Label="Source1" />
+      <Edge From="24" To="25" Label="Source1" />
+      <Edge From="25" To="26" Label="Source1" />
+      <Edge From="27" To="28" Label="Source1" />
+      <Edge From="28" To="29" Label="Source1" />
+      <Edge From="30" To="31" Label="Source1" />
+      <Edge From="31" To="32" Label="Source1" />
     </Edges>
   </Workflow>
 </WorkflowBuilder>
