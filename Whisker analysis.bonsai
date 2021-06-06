@@ -1,0 +1,121 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<WorkflowBuilder Version="2.6.0"
+                 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                 xmlns:cv="clr-namespace:Bonsai.Vision;assembly=Bonsai.Vision"
+                 xmlns:io="clr-namespace:Bonsai.IO;assembly=Bonsai.System"
+                 xmlns="https://bonsai-rx.org/2018/workflow">
+  <Workflow>
+    <Nodes>
+      <Expression xsi:type="ExternalizedMapping">
+        <Property Name="FileName" DisplayName="out file" />
+      </Expression>
+      <Expression xsi:type="ExternalizedMapping">
+        <Property Name="FileName" DisplayName="Video to analyze" />
+      </Expression>
+      <Expression xsi:type="Combinator">
+        <Combinator xsi:type="cv:FileCapture">
+          <cv:FileName>Z:\Ben\Data\Awake_AP2.5_ML4.0_A1\060121\Videos\A113_906_6_1_2021_300FPS_1.avi</cv:FileName>
+          <cv:PlaybackRate>30000000</cv:PlaybackRate>
+          <cv:StartPosition>0</cv:StartPosition>
+          <cv:PositionUnits>Frames</cv:PositionUnits>
+          <cv:Loop>false</cv:Loop>
+          <cv:Playing>true</cv:Playing>
+        </Combinator>
+      </Expression>
+      <Expression xsi:type="Combinator">
+        <Combinator xsi:type="cv:Grayscale" />
+      </Expression>
+      <Expression xsi:type="Combinator">
+        <Combinator xsi:type="cv:CropPolygon">
+          <cv:Regions>
+            <cv:ArrayOfPoint>
+              <cv:Point>
+                <cv:X>212</cv:X>
+                <cv:Y>170</cv:Y>
+              </cv:Point>
+              <cv:Point>
+                <cv:X>377</cv:X>
+                <cv:Y>170</cv:Y>
+              </cv:Point>
+              <cv:Point>
+                <cv:X>377</cv:X>
+                <cv:Y>276</cv:Y>
+              </cv:Point>
+              <cv:Point>
+                <cv:X>212</cv:X>
+                <cv:Y>276</cv:Y>
+              </cv:Point>
+            </cv:ArrayOfPoint>
+            <cv:ArrayOfPoint>
+              <cv:Point>
+                <cv:X>212</cv:X>
+                <cv:Y>276</cv:Y>
+              </cv:Point>
+              <cv:Point>
+                <cv:X>345</cv:X>
+                <cv:Y>276</cv:Y>
+              </cv:Point>
+              <cv:Point>
+                <cv:X>345</cv:X>
+                <cv:Y>311</cv:Y>
+              </cv:Point>
+              <cv:Point>
+                <cv:X>212</cv:X>
+                <cv:Y>311</cv:Y>
+              </cv:Point>
+            </cv:ArrayOfPoint>
+          </cv:Regions>
+          <cv:MaskType>ToZero</cv:MaskType>
+          <cv:FillValue>
+            <cv:Val0>0</cv:Val0>
+            <cv:Val1>0</cv:Val1>
+            <cv:Val2>0</cv:Val2>
+            <cv:Val3>0</cv:Val3>
+          </cv:FillValue>
+        </Combinator>
+      </Expression>
+      <Expression xsi:type="Combinator">
+        <Combinator xsi:type="cv:BackgroundSubtraction">
+          <cv:BackgroundFrames>2</cv:BackgroundFrames>
+          <cv:AdaptationRate>0.81</cv:AdaptationRate>
+          <cv:ThresholdValue>30</cv:ThresholdValue>
+          <cv:ThresholdType>Binary</cv:ThresholdType>
+          <cv:SubtractionMethod>Dark</cv:SubtractionMethod>
+        </Combinator>
+      </Expression>
+      <Expression xsi:type="Combinator">
+        <Combinator xsi:type="cv:AdaptiveThreshold">
+          <cv:MaxValue>255</cv:MaxValue>
+          <cv:AdaptiveMethod>MeanC</cv:AdaptiveMethod>
+          <cv:ThresholdType>BinaryInv</cv:ThresholdType>
+          <cv:BlockSize>3</cv:BlockSize>
+          <cv:Parameter>5</cv:Parameter>
+        </Combinator>
+      </Expression>
+      <Expression xsi:type="Combinator">
+        <Combinator xsi:type="cv:BinaryRegionAnalysis" />
+      </Expression>
+      <Expression xsi:type="MemberSelector">
+        <Selector>Area</Selector>
+      </Expression>
+      <Expression xsi:type="io:CsvWriter">
+        <io:FileName>D:\Ben\A1113_906_whisking.csv</io:FileName>
+        <io:Append>false</io:Append>
+        <io:Overwrite>true</io:Overwrite>
+        <io:Suffix>None</io:Suffix>
+        <io:IncludeHeader>false</io:IncludeHeader>
+      </Expression>
+    </Nodes>
+    <Edges>
+      <Edge From="0" To="9" Label="Source2" />
+      <Edge From="1" To="2" Label="Source1" />
+      <Edge From="2" To="3" Label="Source1" />
+      <Edge From="3" To="4" Label="Source1" />
+      <Edge From="4" To="5" Label="Source1" />
+      <Edge From="5" To="6" Label="Source1" />
+      <Edge From="6" To="7" Label="Source1" />
+      <Edge From="7" To="8" Label="Source1" />
+      <Edge From="8" To="9" Label="Source1" />
+    </Edges>
+  </Workflow>
+</WorkflowBuilder>

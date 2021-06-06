@@ -74,7 +74,7 @@
                         </Expression>
                         <Expression xsi:type="Combinator">
                           <Combinator xsi:type="p1:FpsCameraCapture">
-                            <p1:Index>2</p1:Index>
+                            <p1:Index>3</p1:Index>
                             <p1:Fps>400</p1:Fps>
                             <p1:Settings>0</p1:Settings>
                           </Combinator>
@@ -349,7 +349,7 @@ def process(value):
               </PropertyMappings>
             </Expression>
             <Expression xsi:type="io:CsvWriter">
-              <io:FileName>D:\test\un_13_1_2021_300FPS_.csv</io:FileName>
+              <io:FileName>D:\Ben\FVB_awake\FVB101_30_5_2021_400FPS_Whiskers_.csv</io:FileName>
               <io:ListSeparator>;</io:ListSeparator>
               <io:Append>false</io:Append>
               <io:Overwrite>false</io:Overwrite>
@@ -380,7 +380,7 @@ def process(value):
             </Expression>
             <Expression xsi:type="Combinator">
               <Combinator xsi:type="cv:VideoWriter">
-                <cv:FileName>D:\test\un_14_1_2021_400FPS_.avi</cv:FileName>
+                <cv:FileName>D:\Ben\FVB_awake\FVB101_30_5_2021_400FPS_Whiskers_.avi</cv:FileName>
                 <cv:Suffix>FileCount</cv:Suffix>
                 <cv:Buffered>true</cv:Buffered>
                 <cv:Overwrite>false</cv:Overwrite>
@@ -441,7 +441,7 @@ def process(value):
       </Expression>
       <Expression xsi:type="PropertySource" TypeArguments="cv:VideoWriter,sys:String">
         <MemberName>FileName</MemberName>
-        <Value>D:\test\un</Value>
+        <Value>D:\Ben\FVB_awake\FVB101</Value>
       </Expression>
       <Expression xsi:type="BehaviorSubject">
         <Name>Direct</Name>
@@ -470,64 +470,62 @@ def process(value):
       <Expression xsi:type="PublishSubject">
         <Name>Record stop</Name>
       </Expression>
-      <Expression xsi:type="Disable">
-        <Builder xsi:type="GroupWorkflow">
-          <Name>Trigger output</Name>
-          <Workflow>
-            <Nodes>
-              <Expression xsi:type="SubscribeSubject">
-                <Name>Record stop</Name>
-              </Expression>
-              <Expression xsi:type="Combinator">
-                <Combinator xsi:type="IntProperty">
-                  <Value>0</Value>
-                </Combinator>
-              </Expression>
-              <Expression xsi:type="SubscribeSubject">
-                <Name>Record trigger</Name>
-              </Expression>
-              <Expression xsi:type="Combinator">
-                <Combinator xsi:type="IntProperty">
-                  <Value>10</Value>
-                </Combinator>
-              </Expression>
-              <Expression xsi:type="Combinator">
-                <Combinator xsi:type="IntProperty">
-                  <Value>1</Value>
-                </Combinator>
-              </Expression>
-              <Expression xsi:type="Combinator">
-                <Combinator xsi:type="rx:Merge" />
-              </Expression>
-              <Expression xsi:type="Combinator">
-                <Combinator xsi:type="mx:AnalogOutput">
-                  <mx:SignalSource />
-                  <mx:SampleRate>30000</mx:SampleRate>
-                  <mx:ActiveEdge>Rising</mx:ActiveEdge>
-                  <mx:SampleMode>ContinuousSamples</mx:SampleMode>
-                  <mx:BufferSize>1000</mx:BufferSize>
-                  <mx:Channels>
-                    <mx:AnalogOutputChannelConfiguration>
-                      <mx:ChannelName />
-                      <mx:MinimumValue>-10</mx:MinimumValue>
-                      <mx:MaximumValue>10</mx:MaximumValue>
-                      <mx:PhysicalChannel>Dev1/ao0</mx:PhysicalChannel>
-                      <mx:VoltageUnits>Volts</mx:VoltageUnits>
-                    </mx:AnalogOutputChannelConfiguration>
-                  </mx:Channels>
-                </Combinator>
-              </Expression>
-            </Nodes>
-            <Edges>
-              <Edge From="0" To="1" Label="Source1" />
-              <Edge From="1" To="5" Label="Source1" />
-              <Edge From="2" To="3" Label="Source1" />
-              <Edge From="3" To="5" Label="Source2" />
-              <Edge From="4" To="5" Label="Source3" />
-              <Edge From="5" To="6" Label="Source1" />
-            </Edges>
-          </Workflow>
-        </Builder>
+      <Expression xsi:type="GroupWorkflow">
+        <Name>Trigger output</Name>
+        <Workflow>
+          <Nodes>
+            <Expression xsi:type="SubscribeSubject">
+              <Name>Record stop</Name>
+            </Expression>
+            <Expression xsi:type="Combinator">
+              <Combinator xsi:type="IntProperty">
+                <Value>0</Value>
+              </Combinator>
+            </Expression>
+            <Expression xsi:type="SubscribeSubject">
+              <Name>Record trigger</Name>
+            </Expression>
+            <Expression xsi:type="Combinator">
+              <Combinator xsi:type="IntProperty">
+                <Value>10</Value>
+              </Combinator>
+            </Expression>
+            <Expression xsi:type="Combinator">
+              <Combinator xsi:type="IntProperty">
+                <Value>1</Value>
+              </Combinator>
+            </Expression>
+            <Expression xsi:type="Combinator">
+              <Combinator xsi:type="rx:Merge" />
+            </Expression>
+            <Expression xsi:type="Combinator">
+              <Combinator xsi:type="mx:AnalogOutput">
+                <mx:SignalSource />
+                <mx:SampleRate>30000</mx:SampleRate>
+                <mx:ActiveEdge>Rising</mx:ActiveEdge>
+                <mx:SampleMode>ContinuousSamples</mx:SampleMode>
+                <mx:BufferSize>1000</mx:BufferSize>
+                <mx:Channels>
+                  <mx:AnalogOutputChannelConfiguration>
+                    <mx:ChannelName />
+                    <mx:MinimumValue>-10</mx:MinimumValue>
+                    <mx:MaximumValue>10</mx:MaximumValue>
+                    <mx:PhysicalChannel>Dev1/ao0</mx:PhysicalChannel>
+                    <mx:VoltageUnits>Volts</mx:VoltageUnits>
+                  </mx:AnalogOutputChannelConfiguration>
+                </mx:Channels>
+              </Combinator>
+            </Expression>
+          </Nodes>
+          <Edges>
+            <Edge From="0" To="1" Label="Source1" />
+            <Edge From="1" To="5" Label="Source1" />
+            <Edge From="2" To="3" Label="Source1" />
+            <Edge From="3" To="5" Label="Source2" />
+            <Edge From="4" To="5" Label="Source3" />
+            <Edge From="5" To="6" Label="Source1" />
+          </Edges>
+        </Workflow>
       </Expression>
       <Expression xsi:type="GroupWorkflow">
         <Name>Camera2 acquisition</Name>
@@ -590,8 +588,8 @@ def process(value):
                         </Expression>
                         <Expression xsi:type="Combinator">
                           <Combinator xsi:type="p1:FpsCameraCapture">
-                            <p1:Index>1</p1:Index>
-                            <p1:Fps>100</p1:Fps>
+                            <p1:Index>2</p1:Index>
+                            <p1:Fps>400</p1:Fps>
                             <p1:Settings>0</p1:Settings>
                           </Combinator>
                         </Expression>
@@ -853,7 +851,7 @@ def process(value):
               </PropertyMappings>
             </Expression>
             <Expression xsi:type="io:CsvWriter">
-              <io:FileName>D:\test\un_13_1_2021_100FPS_.csv</io:FileName>
+              <io:FileName>D:\Ben\FVB_awake\FVB101_30_5_2021_400FPS_Face.csv</io:FileName>
               <io:ListSeparator>;</io:ListSeparator>
               <io:Append>false</io:Append>
               <io:Overwrite>false</io:Overwrite>
@@ -896,12 +894,12 @@ def process(value):
             </Expression>
             <Expression xsi:type="Combinator">
               <Combinator xsi:type="cv:VideoWriter">
-                <cv:FileName>D:\test\un_14_1_2021_100FPS_.avi</cv:FileName>
+                <cv:FileName>D:\Ben\FVB_awake\FVB101_30_5_2021_400FPS_Face.avi</cv:FileName>
                 <cv:Suffix>FileCount</cv:Suffix>
                 <cv:Buffered>true</cv:Buffered>
                 <cv:Overwrite>false</cv:Overwrite>
                 <cv:FourCC>40</cv:FourCC>
-                <cv:FrameRate>100</cv:FrameRate>
+                <cv:FrameRate>400</cv:FrameRate>
                 <cv:FrameSize>
                   <cv:Width>0</cv:Width>
                   <cv:Height>0</cv:Height>
@@ -957,7 +955,7 @@ def process(value):
       </Expression>
       <Expression xsi:type="Combinator">
         <Combinator xsi:type="StringProperty">
-          <Value>100FPS_</Value>
+          <Value>400FPS_Face</Value>
         </Combinator>
       </Expression>
       <Expression xsi:type="BehaviorSubject">
@@ -968,7 +966,7 @@ def process(value):
       </Expression>
       <Expression xsi:type="Combinator">
         <Combinator xsi:type="StringProperty">
-          <Value>400FPS_</Value>
+          <Value>400FPS_Whiskers_</Value>
         </Combinator>
       </Expression>
       <Expression xsi:type="BehaviorSubject">
@@ -1001,7 +999,7 @@ def process(value):
       </Expression>
       <Expression xsi:type="Combinator">
         <Combinator xsi:type="IntProperty">
-          <Value>100</Value>
+          <Value>400</Value>
         </Combinator>
       </Expression>
       <Expression xsi:type="BehaviorSubject">
@@ -1012,7 +1010,7 @@ def process(value):
       </Expression>
       <Expression xsi:type="Combinator">
         <Combinator xsi:type="IntProperty">
-          <Value>2</Value>
+          <Value>3</Value>
         </Combinator>
       </Expression>
       <Expression xsi:type="BehaviorSubject">
@@ -1023,7 +1021,7 @@ def process(value):
       </Expression>
       <Expression xsi:type="Combinator">
         <Combinator xsi:type="IntProperty">
-          <Value>1</Value>
+          <Value>2</Value>
         </Combinator>
       </Expression>
       <Expression xsi:type="BehaviorSubject">
