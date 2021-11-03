@@ -128,7 +128,7 @@
                           <mx:ChannelName>Speaker</mx:ChannelName>
                           <mx:MinimumValue>-10</mx:MinimumValue>
                           <mx:MaximumValue>10</mx:MaximumValue>
-                          <mx:PhysicalChannel>Dev3/ao4</mx:PhysicalChannel>
+                          <mx:PhysicalChannel>Dev3/ao0</mx:PhysicalChannel>
                           <mx:VoltageUnits>Volts</mx:VoltageUnits>
                         </mx:AnalogOutputChannelConfiguration>
                       </mx:Channels>
@@ -228,7 +228,7 @@
                         </Expression>
                         <Expression xsi:type="Multiply">
                           <Operand xsi:type="IntProperty">
-                            <Value>7</Value>
+                            <Value>3</Value>
                           </Operand>
                         </Expression>
                         <Expression xsi:type="PropertyMapping">
@@ -238,7 +238,7 @@
                         </Expression>
                         <Expression xsi:type="Add">
                           <Operand xsi:type="IntProperty">
-                            <Value>10800</Value>
+                            <Value>3600</Value>
                           </Operand>
                         </Expression>
                         <Expression xsi:type="PropertyMapping">
@@ -258,7 +258,7 @@
                               <Expression xsi:type="Combinator">
                                 <Combinator xsi:type="dsp:FunctionGenerator">
                                   <dsp:BufferLength>500</dsp:BufferLength>
-                                  <dsp:Frequency>14800</dsp:Frequency>
+                                  <dsp:Frequency>7600</dsp:Frequency>
                                   <dsp:Waveform>Sine</dsp:Waveform>
                                   <dsp:SampleRate>250000</dsp:SampleRate>
                                   <dsp:Amplitude>0.01</dsp:Amplitude>
@@ -291,7 +291,7 @@
                                       <mx:ChannelName />
                                       <mx:MinimumValue>-10</mx:MinimumValue>
                                       <mx:MaximumValue>10</mx:MaximumValue>
-                                      <mx:PhysicalChannel>Dev3/ao4</mx:PhysicalChannel>
+                                      <mx:PhysicalChannel>Dev3/ao0</mx:PhysicalChannel>
                                       <mx:VoltageUnits>Volts</mx:VoltageUnits>
                                     </mx:AnalogOutputChannelConfiguration>
                                   </mx:Channels>
@@ -417,7 +417,7 @@
                                 <mx:ChannelName />
                                 <mx:MinimumValue>-10</mx:MinimumValue>
                                 <mx:MaximumValue>10</mx:MaximumValue>
-                                <mx:PhysicalChannel>Dev3/ao4</mx:PhysicalChannel>
+                                <mx:PhysicalChannel>Dev3/ao0</mx:PhysicalChannel>
                                 <mx:VoltageUnits>Volts</mx:VoltageUnits>
                               </mx:AnalogOutputChannelConfiguration>
                             </mx:Channels>
@@ -1071,7 +1071,7 @@ Starts a protocol of auditory stimulation to determine "Evoked" response</Descri
                           <mx:ChannelName>Record</mx:ChannelName>
                           <mx:MinimumValue>-5</mx:MinimumValue>
                           <mx:MaximumValue>5</mx:MaximumValue>
-                          <mx:PhysicalChannel>Dev3/ao7</mx:PhysicalChannel>
+                          <mx:PhysicalChannel>Dev2/ao0</mx:PhysicalChannel>
                           <mx:VoltageUnits>Volts</mx:VoltageUnits>
                         </mx:AnalogOutputChannelConfiguration>
                       </mx:Channels>
@@ -1097,7 +1097,7 @@ Starts a protocol of auditory stimulation to determine "Evoked" response</Descri
                           <mx:ChannelName>Record</mx:ChannelName>
                           <mx:MinimumValue>-5</mx:MinimumValue>
                           <mx:MaximumValue>5</mx:MaximumValue>
-                          <mx:PhysicalChannel>Dev3/ao7</mx:PhysicalChannel>
+                          <mx:PhysicalChannel>Dev2/ao0</mx:PhysicalChannel>
                           <mx:VoltageUnits>Volts</mx:VoltageUnits>
                         </mx:AnalogOutputChannelConfiguration>
                       </mx:Channels>
@@ -1296,7 +1296,7 @@ Starts a protocol of auditory stimulation to determine "Evoked" response</Descri
                           <mx:ChannelName>Record</mx:ChannelName>
                           <mx:MinimumValue>-5</mx:MinimumValue>
                           <mx:MaximumValue>5</mx:MaximumValue>
-                          <mx:PhysicalChannel>Dev3/ao7</mx:PhysicalChannel>
+                          <mx:PhysicalChannel>Dev2/ao0</mx:PhysicalChannel>
                           <mx:VoltageUnits>Volts</mx:VoltageUnits>
                         </mx:AnalogOutputChannelConfiguration>
                       </mx:Channels>
@@ -1502,41 +1502,45 @@ Starts a protocol of auditory stimulation to determine "Evoked" response</Descri
                       <Value>0</Value>
                     </Combinator>
                   </Expression>
-                  <Expression xsi:type="Combinator">
-                    <Combinator xsi:type="mx:AnalogOutput">
-                      <mx:SignalSource />
-                      <mx:SampleRate>30000</mx:SampleRate>
-                      <mx:ActiveEdge>Rising</mx:ActiveEdge>
-                      <mx:SampleMode>FiniteSamples</mx:SampleMode>
-                      <mx:BufferSize>300</mx:BufferSize>
-                      <mx:Channels>
-                        <mx:AnalogOutputChannelConfiguration>
-                          <mx:ChannelName>Record</mx:ChannelName>
-                          <mx:MinimumValue>-5</mx:MinimumValue>
-                          <mx:MaximumValue>5</mx:MaximumValue>
-                          <mx:PhysicalChannel>Dev3/ao7</mx:PhysicalChannel>
-                          <mx:VoltageUnits>Volts</mx:VoltageUnits>
-                        </mx:AnalogOutputChannelConfiguration>
-                      </mx:Channels>
-                    </Combinator>
+                  <Expression xsi:type="Disable">
+                    <Builder xsi:type="Combinator">
+                      <Combinator xsi:type="mx:AnalogOutput">
+                        <mx:SignalSource />
+                        <mx:SampleRate>30000</mx:SampleRate>
+                        <mx:ActiveEdge>Rising</mx:ActiveEdge>
+                        <mx:SampleMode>FiniteSamples</mx:SampleMode>
+                        <mx:BufferSize>300</mx:BufferSize>
+                        <mx:Channels>
+                          <mx:AnalogOutputChannelConfiguration>
+                            <mx:ChannelName>Record</mx:ChannelName>
+                            <mx:MinimumValue>-5</mx:MinimumValue>
+                            <mx:MaximumValue>5</mx:MaximumValue>
+                            <mx:PhysicalChannel>Dev3/ao7</mx:PhysicalChannel>
+                            <mx:VoltageUnits>Volts</mx:VoltageUnits>
+                          </mx:AnalogOutputChannelConfiguration>
+                        </mx:Channels>
+                      </Combinator>
+                    </Builder>
                   </Expression>
-                  <Expression xsi:type="Combinator">
-                    <Combinator xsi:type="mx:AnalogOutput">
-                      <mx:SignalSource />
-                      <mx:SampleRate>30000</mx:SampleRate>
-                      <mx:ActiveEdge>Rising</mx:ActiveEdge>
-                      <mx:SampleMode>ContinuousSamples</mx:SampleMode>
-                      <mx:BufferSize>1000</mx:BufferSize>
-                      <mx:Channels>
-                        <mx:AnalogOutputChannelConfiguration>
-                          <mx:ChannelName>Arduino</mx:ChannelName>
-                          <mx:MinimumValue>-5</mx:MinimumValue>
-                          <mx:MaximumValue>5</mx:MaximumValue>
-                          <mx:PhysicalChannel>Dev3/ao3</mx:PhysicalChannel>
-                          <mx:VoltageUnits>Volts</mx:VoltageUnits>
-                        </mx:AnalogOutputChannelConfiguration>
-                      </mx:Channels>
-                    </Combinator>
+                  <Expression xsi:type="Disable">
+                    <Builder xsi:type="Combinator">
+                      <Combinator xsi:type="mx:AnalogOutput">
+                        <mx:SignalSource />
+                        <mx:SampleRate>30000</mx:SampleRate>
+                        <mx:ActiveEdge>Rising</mx:ActiveEdge>
+                        <mx:SampleMode>ContinuousSamples</mx:SampleMode>
+                        <mx:BufferSize>1000</mx:BufferSize>
+                        <mx:Channels>
+                          <mx:AnalogOutputChannelConfiguration>
+                            <mx:ChannelName>Arduino</mx:ChannelName>
+                            <mx:MinimumValue>-5</mx:MinimumValue>
+                            <mx:MaximumValue>5</mx:MaximumValue>
+                            <mx:PhysicalChannel>Dev3/ao3</mx:PhysicalChannel>
+                            <mx:VoltageUnits>Volts</mx:VoltageUnits>
+                          </mx:AnalogOutputChannelConfiguration>
+                        </mx:Channels>
+                      </Combinator>
+                    </Builder>
                   </Expression>
                   <Expression xsi:type="SubscribeSubject">
                     <Name>Galvo</Name>
@@ -1736,7 +1740,7 @@ Starts a protocol of auditory stimulation to determine "Evoked" response</Descri
                         </Expression>
                         <Expression xsi:type="Multiply">
                           <Operand xsi:type="IntProperty">
-                            <Value>13</Value>
+                            <Value>8</Value>
                           </Operand>
                         </Expression>
                         <Expression xsi:type="PropertyMapping">
@@ -1746,7 +1750,7 @@ Starts a protocol of auditory stimulation to determine "Evoked" response</Descri
                         </Expression>
                         <Expression xsi:type="Add">
                           <Operand xsi:type="IntProperty">
-                            <Value>21600</Value>
+                            <Value>12600</Value>
                           </Operand>
                         </Expression>
                         <Expression xsi:type="PropertyMapping">
@@ -1766,7 +1770,7 @@ Starts a protocol of auditory stimulation to determine "Evoked" response</Descri
                               <Expression xsi:type="Combinator">
                                 <Combinator xsi:type="dsp:FunctionGenerator">
                                   <dsp:BufferLength>500</dsp:BufferLength>
-                                  <dsp:Frequency>25600</dsp:Frequency>
+                                  <dsp:Frequency>16600</dsp:Frequency>
                                   <dsp:Waveform>Sine</dsp:Waveform>
                                   <dsp:SampleRate>250000</dsp:SampleRate>
                                   <dsp:Amplitude>0.01</dsp:Amplitude>
@@ -1799,7 +1803,7 @@ Starts a protocol of auditory stimulation to determine "Evoked" response</Descri
                                       <mx:ChannelName />
                                       <mx:MinimumValue>-10</mx:MinimumValue>
                                       <mx:MaximumValue>10</mx:MaximumValue>
-                                      <mx:PhysicalChannel>Dev3/ao4</mx:PhysicalChannel>
+                                      <mx:PhysicalChannel>Dev3/ao0</mx:PhysicalChannel>
                                       <mx:VoltageUnits>Volts</mx:VoltageUnits>
                                     </mx:AnalogOutputChannelConfiguration>
                                   </mx:Channels>
@@ -1886,7 +1890,7 @@ Starts a protocol of auditory stimulation to determine "Evoked" response</Descri
                                 <mx:ChannelName />
                                 <mx:MinimumValue>-10</mx:MinimumValue>
                                 <mx:MaximumValue>10</mx:MaximumValue>
-                                <mx:PhysicalChannel>Dev3/ao4</mx:PhysicalChannel>
+                                <mx:PhysicalChannel>Dev3/ao0</mx:PhysicalChannel>
                                 <mx:VoltageUnits>Volts</mx:VoltageUnits>
                               </mx:AnalogOutputChannelConfiguration>
                             </mx:Channels>
