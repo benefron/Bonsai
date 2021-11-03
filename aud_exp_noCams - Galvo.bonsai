@@ -4,8 +4,8 @@
                  xmlns:mx="clr-namespace:Bonsai.DAQmx;assembly=Bonsai.DAQmx"
                  xmlns:rx="clr-namespace:Bonsai.Reactive;assembly=Bonsai.Core"
                  xmlns:dsp="clr-namespace:Bonsai.Dsp;assembly=Bonsai.Dsp"
-                 xmlns:wie="clr-namespace:Bonsai.Windows.Input;assembly=Bonsai.Windows.Input"
                  xmlns:al="clr-namespace:Bonsai.Audio;assembly=Bonsai.Audio"
+                 xmlns:wie="clr-namespace:Bonsai.Windows.Input;assembly=Bonsai.Windows.Input"
                  xmlns="https://bonsai-rx.org/2018/workflow">
   <Workflow>
     <Nodes>
@@ -38,7 +38,7 @@
                           <mx:ChannelName>Arduino</mx:ChannelName>
                           <mx:MinimumValue>-5</mx:MinimumValue>
                           <mx:MaximumValue>5</mx:MaximumValue>
-                          <mx:PhysicalChannel>Dev3/ao3</mx:PhysicalChannel>
+                          <mx:PhysicalChannel>Dev2/ao0</mx:PhysicalChannel>
                           <mx:VoltageUnits>Volts</mx:VoltageUnits>
                         </mx:AnalogOutputChannelConfiguration>
                       </mx:Channels>
@@ -146,6 +146,18 @@
                 </Edges>
               </Workflow>
             </Expression>
+            <Expression xsi:type="SubscribeSubject">
+              <Name>End of sound</Name>
+            </Expression>
+            <Expression xsi:type="Combinator">
+              <Combinator xsi:type="rx:SubscribeWhen" />
+            </Expression>
+            <Expression xsi:type="Combinator">
+              <Combinator xsi:type="rx:TakeUntil" />
+            </Expression>
+            <Expression xsi:type="Combinator">
+              <Combinator xsi:type="rx:Repeat" />
+            </Expression>
             <Expression xsi:type="GroupWorkflow">
               <Name>Complex auditory stimulus</Name>
               <Workflow>
@@ -216,7 +228,7 @@
                         </Expression>
                         <Expression xsi:type="Multiply">
                           <Operand xsi:type="IntProperty">
-                            <Value>15</Value>
+                            <Value>7</Value>
                           </Operand>
                         </Expression>
                         <Expression xsi:type="PropertyMapping">
@@ -226,7 +238,7 @@
                         </Expression>
                         <Expression xsi:type="Add">
                           <Operand xsi:type="IntProperty">
-                            <Value>25200</Value>
+                            <Value>10800</Value>
                           </Operand>
                         </Expression>
                         <Expression xsi:type="PropertyMapping">
@@ -246,7 +258,7 @@
                               <Expression xsi:type="Combinator">
                                 <Combinator xsi:type="dsp:FunctionGenerator">
                                   <dsp:BufferLength>500</dsp:BufferLength>
-                                  <dsp:Frequency>29200</dsp:Frequency>
+                                  <dsp:Frequency>14800</dsp:Frequency>
                                   <dsp:Waveform>Sine</dsp:Waveform>
                                   <dsp:SampleRate>250000</dsp:SampleRate>
                                   <dsp:Amplitude>0.01</dsp:Amplitude>
@@ -390,7 +402,7 @@
                         </Expression>
                         <Expression xsi:type="Multiply">
                           <Operand xsi:type="DoubleProperty">
-                            <Value>15</Value>
+                            <Value>30</Value>
                           </Operand>
                         </Expression>
                         <Expression xsi:type="Combinator">
@@ -413,12 +425,12 @@
                         </Expression>
                         <Expression xsi:type="Combinator">
                           <Combinator xsi:type="rx:Delay">
-                            <rx:DueTime>PT0.1S</rx:DueTime>
+                            <rx:DueTime>PT0S</rx:DueTime>
                           </Combinator>
                         </Expression>
                         <Expression xsi:type="Combinator">
                           <Combinator xsi:type="rx:RepeatCount">
-                            <rx:Count>10</rx:Count>
+                            <rx:Count>3</rx:Count>
                           </Combinator>
                         </Expression>
                         <Expression xsi:type="WorkflowOutput" />
@@ -470,14 +482,8 @@
                 </Edges>
               </Workflow>
             </Expression>
-            <Expression xsi:type="Combinator">
-              <Combinator xsi:type="rx:SubscribeWhen" />
-            </Expression>
-            <Expression xsi:type="Combinator">
-              <Combinator xsi:type="rx:TakeUntil" />
-            </Expression>
-            <Expression xsi:type="Combinator">
-              <Combinator xsi:type="rx:Repeat" />
+            <Expression xsi:type="BehaviorSubject">
+              <Name>End of sound</Name>
             </Expression>
             <Expression xsi:type="GroupWorkflow">
               <Name>Search</Name>
@@ -534,17 +540,17 @@ Change frequancy of stim in function generator</Description>
                   <Expression xsi:type="Combinator">
                     <Combinator xsi:type="dsp:FunctionGenerator">
                       <dsp:BufferLength>300</dsp:BufferLength>
-                      <dsp:Frequency>3000</dsp:Frequency>
+                      <dsp:Frequency>8000</dsp:Frequency>
                       <dsp:Waveform>Sawtooth</dsp:Waveform>
                       <dsp:SampleRate>30000</dsp:SampleRate>
-                      <dsp:Amplitude>2</dsp:Amplitude>
+                      <dsp:Amplitude>0.1</dsp:Amplitude>
                       <dsp:Offset>0</dsp:Offset>
                       <dsp:Phase>0</dsp:Phase>
                     </Combinator>
                   </Expression>
                   <Expression xsi:type="Combinator">
                     <Combinator xsi:type="rx:SampleInterval">
-                      <rx:Interval>PT8S</rx:Interval>
+                      <rx:Interval>PT5S</rx:Interval>
                     </Combinator>
                   </Expression>
                   <Expression xsi:type="BehaviorSubject">
@@ -923,10 +929,10 @@ Starts a protocol of auditory stimulation to determine "Evoked" response</Descri
                         <Expression xsi:type="Combinator">
                           <Combinator xsi:type="dsp:FunctionGenerator">
                             <dsp:BufferLength>300</dsp:BufferLength>
-                            <dsp:Frequency>3000</dsp:Frequency>
+                            <dsp:Frequency>8000</dsp:Frequency>
                             <dsp:Waveform>Sawtooth</dsp:Waveform>
                             <dsp:SampleRate>30000</dsp:SampleRate>
-                            <dsp:Amplitude>2</dsp:Amplitude>
+                            <dsp:Amplitude>0.1</dsp:Amplitude>
                             <dsp:Offset>0</dsp:Offset>
                             <dsp:Phase>0</dsp:Phase>
                           </Combinator>
@@ -992,7 +998,7 @@ Starts a protocol of auditory stimulation to determine "Evoked" response</Descri
                   </Expression>
                   <Expression xsi:type="Combinator">
                     <Combinator xsi:type="rx:SampleInterval">
-                      <rx:Interval>PT8S</rx:Interval>
+                      <rx:Interval>PT5S</rx:Interval>
                     </Combinator>
                   </Expression>
                   <Expression xsi:type="Combinator">
@@ -1048,62 +1054,54 @@ Starts a protocol of auditory stimulation to determine "Evoked" response</Descri
                       <rx:DueTime>PT1S</rx:DueTime>
                     </Combinator>
                   </Expression>
-                  <Expression xsi:type="Disable">
-                    <Builder xsi:type="Combinator">
-                      <Combinator xsi:type="DoubleProperty">
-                        <Value>0</Value>
-                      </Combinator>
-                    </Builder>
+                  <Expression xsi:type="Combinator">
+                    <Combinator xsi:type="DoubleProperty">
+                      <Value>0</Value>
+                    </Combinator>
                   </Expression>
-                  <Expression xsi:type="Disable">
-                    <Builder xsi:type="Combinator">
-                      <Combinator xsi:type="mx:AnalogOutput">
-                        <mx:SignalSource />
-                        <mx:SampleRate>30000</mx:SampleRate>
-                        <mx:ActiveEdge>Rising</mx:ActiveEdge>
-                        <mx:SampleMode>FiniteSamples</mx:SampleMode>
-                        <mx:BufferSize>300</mx:BufferSize>
-                        <mx:Channels>
-                          <mx:AnalogOutputChannelConfiguration>
-                            <mx:ChannelName>Record</mx:ChannelName>
-                            <mx:MinimumValue>-5</mx:MinimumValue>
-                            <mx:MaximumValue>5</mx:MaximumValue>
-                            <mx:PhysicalChannel>Dev3/ao7</mx:PhysicalChannel>
-                            <mx:VoltageUnits>Volts</mx:VoltageUnits>
-                          </mx:AnalogOutputChannelConfiguration>
-                        </mx:Channels>
-                      </Combinator>
-                    </Builder>
+                  <Expression xsi:type="Combinator">
+                    <Combinator xsi:type="mx:AnalogOutput">
+                      <mx:SignalSource />
+                      <mx:SampleRate>30000</mx:SampleRate>
+                      <mx:ActiveEdge>Rising</mx:ActiveEdge>
+                      <mx:SampleMode>FiniteSamples</mx:SampleMode>
+                      <mx:BufferSize>300</mx:BufferSize>
+                      <mx:Channels>
+                        <mx:AnalogOutputChannelConfiguration>
+                          <mx:ChannelName>Record</mx:ChannelName>
+                          <mx:MinimumValue>-5</mx:MinimumValue>
+                          <mx:MaximumValue>5</mx:MaximumValue>
+                          <mx:PhysicalChannel>Dev3/ao7</mx:PhysicalChannel>
+                          <mx:VoltageUnits>Volts</mx:VoltageUnits>
+                        </mx:AnalogOutputChannelConfiguration>
+                      </mx:Channels>
+                    </Combinator>
                   </Expression>
                   <Expression xsi:type="Combinator">
                     <Combinator xsi:type="rx:TakeUntil" />
                   </Expression>
-                  <Expression xsi:type="Disable">
-                    <Builder xsi:type="Combinator">
-                      <Combinator xsi:type="DoubleProperty">
-                        <Value>5</Value>
-                      </Combinator>
-                    </Builder>
+                  <Expression xsi:type="Combinator">
+                    <Combinator xsi:type="DoubleProperty">
+                      <Value>5</Value>
+                    </Combinator>
                   </Expression>
-                  <Expression xsi:type="Disable">
-                    <Builder xsi:type="Combinator">
-                      <Combinator xsi:type="mx:AnalogOutput">
-                        <mx:SignalSource />
-                        <mx:SampleRate>30000</mx:SampleRate>
-                        <mx:ActiveEdge>Rising</mx:ActiveEdge>
-                        <mx:SampleMode>FiniteSamples</mx:SampleMode>
-                        <mx:BufferSize>300</mx:BufferSize>
-                        <mx:Channels>
-                          <mx:AnalogOutputChannelConfiguration>
-                            <mx:ChannelName>Record</mx:ChannelName>
-                            <mx:MinimumValue>-5</mx:MinimumValue>
-                            <mx:MaximumValue>5</mx:MaximumValue>
-                            <mx:PhysicalChannel>Dev3/ao7</mx:PhysicalChannel>
-                            <mx:VoltageUnits>Volts</mx:VoltageUnits>
-                          </mx:AnalogOutputChannelConfiguration>
-                        </mx:Channels>
-                      </Combinator>
-                    </Builder>
+                  <Expression xsi:type="Combinator">
+                    <Combinator xsi:type="mx:AnalogOutput">
+                      <mx:SignalSource />
+                      <mx:SampleRate>30000</mx:SampleRate>
+                      <mx:ActiveEdge>Rising</mx:ActiveEdge>
+                      <mx:SampleMode>FiniteSamples</mx:SampleMode>
+                      <mx:BufferSize>300</mx:BufferSize>
+                      <mx:Channels>
+                        <mx:AnalogOutputChannelConfiguration>
+                          <mx:ChannelName>Record</mx:ChannelName>
+                          <mx:MinimumValue>-5</mx:MinimumValue>
+                          <mx:MaximumValue>5</mx:MaximumValue>
+                          <mx:PhysicalChannel>Dev3/ao7</mx:PhysicalChannel>
+                          <mx:VoltageUnits>Volts</mx:VoltageUnits>
+                        </mx:AnalogOutputChannelConfiguration>
+                      </mx:Channels>
+                    </Combinator>
                   </Expression>
                   <Expression xsi:type="BehaviorSubject">
                     <Name>Recording</Name>
@@ -1125,7 +1123,7 @@ Starts a protocol of auditory stimulation to determine "Evoked" response</Descri
                                 <mx:MinimumValue>-10</mx:MinimumValue>
                                 <mx:MaximumValue>10</mx:MaximumValue>
                                 <mx:PhysicalChannel>Dev2/ai2</mx:PhysicalChannel>
-                                <mx:TerminalConfiguration>Differential</mx:TerminalConfiguration>
+                                <mx:TerminalConfiguration>Rse</mx:TerminalConfiguration>
                                 <mx:VoltageUnits>Volts</mx:VoltageUnits>
                               </mx:AnalogInputChannelConfiguration>
                             </mx:Channels>
@@ -1133,8 +1131,8 @@ Starts a protocol of auditory stimulation to determine "Evoked" response</Descri
                         </Expression>
                         <Expression xsi:type="Combinator">
                           <Combinator xsi:type="dsp:Rescale">
-                            <dsp:Min>-10</dsp:Min>
-                            <dsp:Max>-7</dsp:Max>
+                            <dsp:Min>2</dsp:Min>
+                            <dsp:Max>4</dsp:Max>
                             <dsp:RangeMin>0</dsp:RangeMin>
                             <dsp:RangeMax>1</dsp:RangeMax>
                             <dsp:RescaleType>Clamp</dsp:RescaleType>
@@ -1280,7 +1278,7 @@ Starts a protocol of auditory stimulation to determine "Evoked" response</Descri
                           <mx:ChannelName>Arduino</mx:ChannelName>
                           <mx:MinimumValue>-5</mx:MinimumValue>
                           <mx:MaximumValue>5</mx:MaximumValue>
-                          <mx:PhysicalChannel>Dev3/ao3</mx:PhysicalChannel>
+                          <mx:PhysicalChannel>Dev2/ao0</mx:PhysicalChannel>
                           <mx:VoltageUnits>Volts</mx:VoltageUnits>
                         </mx:AnalogOutputChannelConfiguration>
                       </mx:Channels>
@@ -1324,7 +1322,7 @@ Starts a protocol of auditory stimulation to determine "Evoked" response</Descri
                           <mx:ChannelName>Arduino</mx:ChannelName>
                           <mx:MinimumValue>-5</mx:MinimumValue>
                           <mx:MaximumValue>5</mx:MaximumValue>
-                          <mx:PhysicalChannel>Dev3/ao3</mx:PhysicalChannel>
+                          <mx:PhysicalChannel>Dev2/ao0</mx:PhysicalChannel>
                           <mx:VoltageUnits>Volts</mx:VoltageUnits>
                         </mx:AnalogOutputChannelConfiguration>
                       </mx:Channels>
@@ -1350,9 +1348,19 @@ Starts a protocol of auditory stimulation to determine "Evoked" response</Descri
                     </Combinator>
                   </Expression>
                   <Expression xsi:type="Combinator">
+                    <Combinator xsi:type="IntProperty">
+                      <Value>0</Value>
+                    </Combinator>
+                  </Expression>
+                  <Expression xsi:type="Combinator">
                     <Combinator xsi:type="wie:KeyDown">
-                      <wie:Filter>Back H Control Alt</wie:Filter>
+                      <wie:Filter>Back H Shift Alt</wie:Filter>
                       <wie:SuppressRepetitions>false</wie:SuppressRepetitions>
+                    </Combinator>
+                  </Expression>
+                  <Expression xsi:type="Combinator">
+                    <Combinator xsi:type="IntProperty">
+                      <Value>0</Value>
                     </Combinator>
                   </Expression>
                   <Expression xsi:type="SubscribeSubject">
@@ -1395,7 +1403,7 @@ Starts a protocol of auditory stimulation to determine "Evoked" response</Descri
                   <Expression xsi:type="Combinator">
                     <Combinator xsi:type="rx:Timer">
                       <rx:DueTime>PT0S</rx:DueTime>
-                      <rx:Period>PT2S</rx:Period>
+                      <rx:Period>PT8S</rx:Period>
                     </Combinator>
                   </Expression>
                   <Expression xsi:type="SubscribeSubject">
@@ -1425,7 +1433,7 @@ Starts a protocol of auditory stimulation to determine "Evoked" response</Descri
                   <Expression xsi:type="Divide" />
                   <Expression xsi:type="Multiply">
                     <Operand xsi:type="DoubleProperty">
-                      <Value>2</Value>
+                      <Value>3</Value>
                     </Operand>
                   </Expression>
                   <Expression xsi:type="PropertyMapping">
@@ -1435,22 +1443,49 @@ Starts a protocol of auditory stimulation to determine "Evoked" response</Descri
                   </Expression>
                   <Expression xsi:type="Combinator">
                     <Combinator xsi:type="dsp:FunctionGenerator">
-                      <dsp:BufferLength>1500</dsp:BufferLength>
-                      <dsp:Frequency>40</dsp:Frequency>
-                      <dsp:Waveform>Sawtooth</dsp:Waveform>
+                      <dsp:BufferLength>3600</dsp:BufferLength>
+                      <dsp:Frequency>25</dsp:Frequency>
+                      <dsp:Waveform>Sine</dsp:Waveform>
                       <dsp:SampleRate>30000</dsp:SampleRate>
-                      <dsp:Amplitude>5</dsp:Amplitude>
+                      <dsp:Amplitude>1</dsp:Amplitude>
                       <dsp:Offset>0</dsp:Offset>
                       <dsp:Phase>0</dsp:Phase>
                     </Combinator>
                   </Expression>
                   <Expression xsi:type="Combinator">
                     <Combinator xsi:type="rx:SampleInterval">
-                      <rx:Interval>PT2S</rx:Interval>
+                      <rx:Interval>PT8S</rx:Interval>
                     </Combinator>
                   </Expression>
                   <Expression xsi:type="BehaviorSubject">
                     <Name>Galvo</Name>
+                  </Expression>
+                  <Expression xsi:type="SubscribeSubject">
+                    <Name>End of sound</Name>
+                  </Expression>
+                  <Expression xsi:type="Combinator">
+                    <Combinator xsi:type="IntProperty">
+                      <Value>0</Value>
+                    </Combinator>
+                  </Expression>
+                  <Expression xsi:type="Combinator">
+                    <Combinator xsi:type="rx:Merge" />
+                  </Expression>
+                  <Expression xsi:type="SubscribeSubject">
+                    <Name>End of sound</Name>
+                  </Expression>
+                  <Expression xsi:type="Combinator">
+                    <Combinator xsi:type="rx:Delay">
+                      <rx:DueTime>PT3M</rx:DueTime>
+                    </Combinator>
+                  </Expression>
+                  <Expression xsi:type="Combinator">
+                    <Combinator xsi:type="IntProperty">
+                      <Value>0</Value>
+                    </Combinator>
+                  </Expression>
+                  <Expression xsi:type="Combinator">
+                    <Combinator xsi:type="rx:Merge" />
                   </Expression>
                   <Expression xsi:type="Combinator">
                     <Combinator xsi:type="rx:TakeUntil" />
@@ -1462,6 +1497,47 @@ Starts a protocol of auditory stimulation to determine "Evoked" response</Descri
                     <Combinator xsi:type="rx:Repeat" />
                   </Expression>
                   <Expression xsi:type="WorkflowOutput" />
+                  <Expression xsi:type="Combinator">
+                    <Combinator xsi:type="DoubleProperty">
+                      <Value>0</Value>
+                    </Combinator>
+                  </Expression>
+                  <Expression xsi:type="Combinator">
+                    <Combinator xsi:type="mx:AnalogOutput">
+                      <mx:SignalSource />
+                      <mx:SampleRate>30000</mx:SampleRate>
+                      <mx:ActiveEdge>Rising</mx:ActiveEdge>
+                      <mx:SampleMode>FiniteSamples</mx:SampleMode>
+                      <mx:BufferSize>300</mx:BufferSize>
+                      <mx:Channels>
+                        <mx:AnalogOutputChannelConfiguration>
+                          <mx:ChannelName>Record</mx:ChannelName>
+                          <mx:MinimumValue>-5</mx:MinimumValue>
+                          <mx:MaximumValue>5</mx:MaximumValue>
+                          <mx:PhysicalChannel>Dev3/ao7</mx:PhysicalChannel>
+                          <mx:VoltageUnits>Volts</mx:VoltageUnits>
+                        </mx:AnalogOutputChannelConfiguration>
+                      </mx:Channels>
+                    </Combinator>
+                  </Expression>
+                  <Expression xsi:type="Combinator">
+                    <Combinator xsi:type="mx:AnalogOutput">
+                      <mx:SignalSource />
+                      <mx:SampleRate>30000</mx:SampleRate>
+                      <mx:ActiveEdge>Rising</mx:ActiveEdge>
+                      <mx:SampleMode>ContinuousSamples</mx:SampleMode>
+                      <mx:BufferSize>1000</mx:BufferSize>
+                      <mx:Channels>
+                        <mx:AnalogOutputChannelConfiguration>
+                          <mx:ChannelName>Arduino</mx:ChannelName>
+                          <mx:MinimumValue>-5</mx:MinimumValue>
+                          <mx:MaximumValue>5</mx:MaximumValue>
+                          <mx:PhysicalChannel>Dev3/ao3</mx:PhysicalChannel>
+                          <mx:VoltageUnits>Volts</mx:VoltageUnits>
+                        </mx:AnalogOutputChannelConfiguration>
+                      </mx:Channels>
+                    </Combinator>
+                  </Expression>
                   <Expression xsi:type="SubscribeSubject">
                     <Name>Galvo</Name>
                   </Expression>
@@ -1496,7 +1572,7 @@ Starts a protocol of auditory stimulation to determine "Evoked" response</Descri
                             <mx:SampleRate>30000</mx:SampleRate>
                             <mx:ActiveEdge>Rising</mx:ActiveEdge>
                             <mx:SampleMode>FiniteSamples</mx:SampleMode>
-                            <mx:BufferSize>1500</mx:BufferSize>
+                            <mx:BufferSize>3600</mx:BufferSize>
                             <mx:Channels>
                               <mx:AnalogOutputChannelConfiguration>
                                 <mx:ChannelName>Galvo</mx:ChannelName>
@@ -1522,34 +1598,46 @@ Starts a protocol of auditory stimulation to determine "Evoked" response</Descri
                   </Expression>
                 </Nodes>
                 <Edges>
-                  <Edge From="0" To="24" Label="Source2" />
-                  <Edge From="1" To="25" Label="Source2" />
+                  <Edge From="0" To="1" Label="Source1" />
+                  <Edge From="1" To="32" Label="Source1" />
                   <Edge From="2" To="3" Label="Source1" />
-                  <Edge From="3" To="21" Label="Source2" />
+                  <Edge From="3" To="28" Label="Source1" />
                   <Edge From="4" To="5" Label="Source1" />
-                  <Edge From="5" To="22" Label="Source2" />
+                  <Edge From="5" To="23" Label="Source2" />
                   <Edge From="6" To="7" Label="Source1" />
-                  <Edge From="7" To="8" Label="Source1" />
-                  <Edge From="8" To="21" Label="Source3" />
+                  <Edge From="7" To="24" Label="Source2" />
+                  <Edge From="8" To="9" Label="Source1" />
                   <Edge From="9" To="10" Label="Source1" />
-                  <Edge From="10" To="11" Label="Source1" />
-                  <Edge From="11" To="21" Label="Source4" />
+                  <Edge From="10" To="23" Label="Source3" />
+                  <Edge From="11" To="12" Label="Source1" />
                   <Edge From="12" To="13" Label="Source1" />
-                  <Edge From="13" To="19" Label="Source2" />
-                  <Edge From="14" To="17" Label="Source1" />
-                  <Edge From="15" To="16" Label="Source1" />
-                  <Edge From="16" To="17" Label="Source2" />
+                  <Edge From="13" To="23" Label="Source4" />
+                  <Edge From="14" To="15" Label="Source1" />
+                  <Edge From="15" To="21" Label="Source2" />
+                  <Edge From="16" To="19" Label="Source1" />
                   <Edge From="17" To="18" Label="Source1" />
-                  <Edge From="18" To="19" Label="Source1" />
+                  <Edge From="18" To="19" Label="Source2" />
                   <Edge From="19" To="20" Label="Source1" />
                   <Edge From="20" To="21" Label="Source1" />
                   <Edge From="21" To="22" Label="Source1" />
                   <Edge From="22" To="23" Label="Source1" />
                   <Edge From="23" To="24" Label="Source1" />
                   <Edge From="24" To="25" Label="Source1" />
-                  <Edge From="25" To="26" Label="Source1" />
+                  <Edge From="25" To="33" Label="Source1" />
                   <Edge From="26" To="27" Label="Source1" />
-                  <Edge From="28" To="29" Label="Source1" />
+                  <Edge From="27" To="28" Label="Source2" />
+                  <Edge From="28" To="34" Label="Source2" />
+                  <Edge From="29" To="30" Label="Source1" />
+                  <Edge From="30" To="31" Label="Source1" />
+                  <Edge From="30" To="37" Label="Source1" />
+                  <Edge From="31" To="32" Label="Source2" />
+                  <Edge From="32" To="33" Label="Source2" />
+                  <Edge From="33" To="34" Label="Source1" />
+                  <Edge From="34" To="35" Label="Source1" />
+                  <Edge From="35" To="36" Label="Source1" />
+                  <Edge From="37" To="38" Label="Source1" />
+                  <Edge From="37" To="39" Label="Source1" />
+                  <Edge From="40" To="41" Label="Source1" />
                 </Edges>
               </Workflow>
             </Expression>
@@ -1648,7 +1736,7 @@ Starts a protocol of auditory stimulation to determine "Evoked" response</Descri
                         </Expression>
                         <Expression xsi:type="Multiply">
                           <Operand xsi:type="IntProperty">
-                            <Value>15</Value>
+                            <Value>13</Value>
                           </Operand>
                         </Expression>
                         <Expression xsi:type="PropertyMapping">
@@ -1658,7 +1746,7 @@ Starts a protocol of auditory stimulation to determine "Evoked" response</Descri
                         </Expression>
                         <Expression xsi:type="Add">
                           <Operand xsi:type="IntProperty">
-                            <Value>25200</Value>
+                            <Value>21600</Value>
                           </Operand>
                         </Expression>
                         <Expression xsi:type="PropertyMapping">
@@ -1678,7 +1766,7 @@ Starts a protocol of auditory stimulation to determine "Evoked" response</Descri
                               <Expression xsi:type="Combinator">
                                 <Combinator xsi:type="dsp:FunctionGenerator">
                                   <dsp:BufferLength>500</dsp:BufferLength>
-                                  <dsp:Frequency>29200</dsp:Frequency>
+                                  <dsp:Frequency>25600</dsp:Frequency>
                                   <dsp:Waveform>Sine</dsp:Waveform>
                                   <dsp:SampleRate>250000</dsp:SampleRate>
                                   <dsp:Amplitude>0.01</dsp:Amplitude>
@@ -1783,7 +1871,7 @@ Starts a protocol of auditory stimulation to determine "Evoked" response</Descri
                         </Expression>
                         <Expression xsi:type="Multiply">
                           <Operand xsi:type="DoubleProperty">
-                            <Value>15</Value>
+                            <Value>20</Value>
                           </Operand>
                         </Expression>
                         <Expression xsi:type="Combinator">
@@ -1806,12 +1894,12 @@ Starts a protocol of auditory stimulation to determine "Evoked" response</Descri
                         </Expression>
                         <Expression xsi:type="Combinator">
                           <Combinator xsi:type="rx:Delay">
-                            <rx:DueTime>PT0.1S</rx:DueTime>
+                            <rx:DueTime>PT0S</rx:DueTime>
                           </Combinator>
                         </Expression>
                         <Expression xsi:type="Combinator">
                           <Combinator xsi:type="rx:RepeatCount">
-                            <rx:Count>10</rx:Count>
+                            <rx:Count>3</rx:Count>
                           </Combinator>
                         </Expression>
                         <Expression xsi:type="WorkflowOutput" />
@@ -1887,6 +1975,7 @@ Starts a protocol of auditory stimulation to determine "Evoked" response</Descri
             <Edge From="11" To="12" Label="Source2" />
             <Edge From="12" To="13" Label="Source1" />
             <Edge From="13" To="14" Label="Source1" />
+            <Edge From="15" To="16" Label="Source1" />
           </Edges>
         </Workflow>
       </Expression>
@@ -1910,7 +1999,7 @@ Starts a protocol of auditory stimulation to determine "Evoked" response</Descri
             </Expression>
             <Expression xsi:type="Combinator">
               <Combinator xsi:type="DoubleProperty">
-                <Value>3000</Value>
+                <Value>8000</Value>
               </Combinator>
             </Expression>
             <Expression xsi:type="BehaviorSubject">
@@ -1921,7 +2010,7 @@ Starts a protocol of auditory stimulation to determine "Evoked" response</Descri
             </Expression>
             <Expression xsi:type="Combinator">
               <Combinator xsi:type="IntProperty">
-                <Value>8</Value>
+                <Value>5</Value>
               </Combinator>
             </Expression>
             <Expression xsi:type="Multiply">
@@ -1937,7 +2026,7 @@ Starts a protocol of auditory stimulation to determine "Evoked" response</Descri
             </Expression>
             <Expression xsi:type="Combinator">
               <Combinator xsi:type="DoubleProperty">
-                <Value>2</Value>
+                <Value>0.1</Value>
               </Combinator>
             </Expression>
             <Expression xsi:type="BehaviorSubject">
@@ -2004,7 +2093,7 @@ Starts a protocol of auditory stimulation to determine "Evoked" response</Descri
             </Expression>
             <Expression xsi:type="Combinator">
               <Combinator xsi:type="IntProperty">
-                <Value>50</Value>
+                <Value>120</Value>
               </Combinator>
             </Expression>
             <Expression xsi:type="BehaviorSubject">
@@ -2015,7 +2104,7 @@ Starts a protocol of auditory stimulation to determine "Evoked" response</Descri
             </Expression>
             <Expression xsi:type="Combinator">
               <Combinator xsi:type="IntProperty">
-                <Value>2</Value>
+                <Value>3</Value>
               </Combinator>
             </Expression>
             <Expression xsi:type="BehaviorSubject">
@@ -2026,7 +2115,7 @@ Starts a protocol of auditory stimulation to determine "Evoked" response</Descri
             </Expression>
             <Expression xsi:type="Combinator">
               <Combinator xsi:type="IntProperty">
-                <Value>2</Value>
+                <Value>8</Value>
               </Combinator>
             </Expression>
             <Expression xsi:type="Multiply">
@@ -2042,7 +2131,7 @@ Starts a protocol of auditory stimulation to determine "Evoked" response</Descri
             </Expression>
             <Expression xsi:type="Combinator">
               <Combinator xsi:type="DoubleProperty">
-                <Value>5</Value>
+                <Value>1</Value>
               </Combinator>
             </Expression>
             <Expression xsi:type="BehaviorSubject">
