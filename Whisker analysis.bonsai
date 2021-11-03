@@ -14,8 +14,8 @@
       </Expression>
       <Expression xsi:type="Combinator">
         <Combinator xsi:type="cv:FileCapture">
-          <cv:FileName>Z:\Ben\Data\Awake_AP2.5_ML4.0_A1\060121\Videos\A113_906_6_1_2021_300FPS_1.avi</cv:FileName>
-          <cv:PlaybackRate>30000000</cv:PlaybackRate>
+          <cv:FileName>Z:\Ben\Data\Awake_AP2.5_ML4.0_A1\FVB\FVB104_objects\Fvb104 Muted 28 7 2021 400Fps Face1-13.m4v</cv:FileName>
+          <cv:PlaybackRate>192000000</cv:PlaybackRate>
           <cv:StartPosition>0</cv:StartPosition>
           <cv:PositionUnits>Frames</cv:PositionUnits>
           <cv:Loop>false</cv:Loop>
@@ -30,38 +30,56 @@
           <cv:Regions>
             <cv:ArrayOfPoint>
               <cv:Point>
-                <cv:X>212</cv:X>
-                <cv:Y>170</cv:Y>
+                <cv:X>438</cv:X>
+                <cv:Y>291</cv:Y>
               </cv:Point>
               <cv:Point>
-                <cv:X>377</cv:X>
-                <cv:Y>170</cv:Y>
+                <cv:X>439</cv:X>
+                <cv:Y>291</cv:Y>
               </cv:Point>
               <cv:Point>
-                <cv:X>377</cv:X>
-                <cv:Y>276</cv:Y>
+                <cv:X>439</cv:X>
+                <cv:Y>291</cv:Y>
               </cv:Point>
               <cv:Point>
-                <cv:X>212</cv:X>
-                <cv:Y>276</cv:Y>
+                <cv:X>438</cv:X>
+                <cv:Y>291</cv:Y>
               </cv:Point>
             </cv:ArrayOfPoint>
             <cv:ArrayOfPoint>
               <cv:Point>
-                <cv:X>212</cv:X>
-                <cv:Y>276</cv:Y>
+                <cv:X>402</cv:X>
+                <cv:Y>300</cv:Y>
               </cv:Point>
               <cv:Point>
-                <cv:X>345</cv:X>
-                <cv:Y>276</cv:Y>
+                <cv:X>451</cv:X>
+                <cv:Y>300</cv:Y>
               </cv:Point>
               <cv:Point>
-                <cv:X>345</cv:X>
-                <cv:Y>311</cv:Y>
+                <cv:X>451</cv:X>
+                <cv:Y>343</cv:Y>
               </cv:Point>
               <cv:Point>
-                <cv:X>212</cv:X>
-                <cv:Y>311</cv:Y>
+                <cv:X>402</cv:X>
+                <cv:Y>343</cv:Y>
+              </cv:Point>
+            </cv:ArrayOfPoint>
+            <cv:ArrayOfPoint>
+              <cv:Point>
+                <cv:X>480</cv:X>
+                <cv:Y>312</cv:Y>
+              </cv:Point>
+              <cv:Point>
+                <cv:X>495</cv:X>
+                <cv:Y>312</cv:Y>
+              </cv:Point>
+              <cv:Point>
+                <cv:X>495</cv:X>
+                <cv:Y>346</cv:Y>
+              </cv:Point>
+              <cv:Point>
+                <cv:X>480</cv:X>
+                <cv:Y>346</cv:Y>
               </cv:Point>
             </cv:ArrayOfPoint>
           </cv:Regions>
@@ -78,7 +96,7 @@
         <Combinator xsi:type="cv:BackgroundSubtraction">
           <cv:BackgroundFrames>2</cv:BackgroundFrames>
           <cv:AdaptationRate>0.81</cv:AdaptationRate>
-          <cv:ThresholdValue>30</cv:ThresholdValue>
+          <cv:ThresholdValue>10</cv:ThresholdValue>
           <cv:ThresholdType>Binary</cv:ThresholdType>
           <cv:SubtractionMethod>Dark</cv:SubtractionMethod>
         </Combinator>
@@ -99,7 +117,7 @@
         <Selector>Area</Selector>
       </Expression>
       <Expression xsi:type="io:CsvWriter">
-        <io:FileName>D:\Ben\A1113_906_whisking.csv</io:FileName>
+        <io:FileName>Z:\Ben\Data\Awake_AP2.5_ML4.0_A1\FVB\FVB104_objects\Whsiking\Muted.csv</io:FileName>
         <io:Append>false</io:Append>
         <io:Overwrite>true</io:Overwrite>
         <io:Suffix>None</io:Suffix>
