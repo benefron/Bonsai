@@ -94,17 +94,17 @@
                   </Expression>
                   <Expression xsi:type="Combinator">
                     <Combinator xsi:type="IntProperty">
-                      <Value>2000</Value>
+                      <Value>6000</Value>
                     </Combinator>
                   </Expression>
                   <Expression xsi:type="Combinator">
                     <Combinator xsi:type="IntProperty">
-                      <Value>2000</Value>
+                      <Value>1000</Value>
                     </Combinator>
                   </Expression>
                   <Expression xsi:type="Multiply">
                     <Operand xsi:type="IntProperty">
-                      <Value>6</Value>
+                      <Value>15</Value>
                     </Operand>
                   </Expression>
                   <Expression xsi:type="PropertyMapping">
@@ -114,7 +114,7 @@
                   </Expression>
                   <Expression xsi:type="Add">
                     <Operand xsi:type="IntProperty">
-                      <Value>10000</Value>
+                      <Value>14000</Value>
                     </Operand>
                   </Expression>
                   <Expression xsi:type="PropertyMapping">
@@ -133,8 +133,8 @@
                         </Expression>
                         <Expression xsi:type="Combinator">
                           <Combinator xsi:type="dsp:FunctionGenerator">
-                            <dsp:BufferLength>250</dsp:BufferLength>
-                            <dsp:Frequency>12000</dsp:Frequency>
+                            <dsp:BufferLength>500</dsp:BufferLength>
+                            <dsp:Frequency>20000</dsp:Frequency>
                             <dsp:Waveform>Sine</dsp:Waveform>
                             <dsp:SampleRate>250000</dsp:SampleRate>
                             <dsp:Amplitude>0.01</dsp:Amplitude>
@@ -147,7 +147,7 @@
                         </Expression>
                         <Expression xsi:type="Multiply">
                           <Operand xsi:type="DoubleProperty">
-                            <Value>15</Value>
+                            <Value>5</Value>
                           </Operand>
                         </Expression>
                         <Expression xsi:type="Combinator">
@@ -239,7 +239,7 @@
                   </Expression>
                   <Expression xsi:type="Multiply">
                     <Operand xsi:type="DoubleProperty">
-                      <Value>5</Value>
+                      <Value>10</Value>
                     </Operand>
                   </Expression>
                   <Expression xsi:type="Combinator">
