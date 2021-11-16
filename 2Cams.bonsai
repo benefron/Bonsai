@@ -351,7 +351,7 @@ def process(value):
               </PropertyMappings>
             </Expression>
             <Expression xsi:type="io:CsvWriter">
-              <io:FileName>D:\Ben\FVB_awake\test_10_11_2021_400FPS_Whiskers_.csv</io:FileName>
+              <io:FileName>D:\Ben\161121\FVB105__16_11_2021_400FPS_Whiskers_.csv</io:FileName>
               <io:ListSeparator>;</io:ListSeparator>
               <io:Append>false</io:Append>
               <io:Overwrite>false</io:Overwrite>
@@ -390,7 +390,7 @@ def process(value):
             </Expression>
             <Expression xsi:type="Combinator">
               <Combinator xsi:type="cv:VideoWriter">
-                <cv:FileName>D:\Ben\FVB_awake\test_10_11_2021_400FPS_Whiskers_.avi</cv:FileName>
+                <cv:FileName>D:\Ben\161121\FVB105__16_11_2021_400FPS_Whiskers_.avi</cv:FileName>
                 <cv:Suffix>Timestamp</cv:Suffix>
                 <cv:Buffered>true</cv:Buffered>
                 <cv:Overwrite>false</cv:Overwrite>
@@ -829,7 +829,7 @@ def process(value):
               </PropertyMappings>
             </Expression>
             <Expression xsi:type="io:CsvWriter">
-              <io:FileName>D:\Ben\FVB_awake\test_10_11_2021_400FPS_Face.csv</io:FileName>
+              <io:FileName>D:\Ben\161121\FVB105__16_11_2021_100FPS_Face.csv</io:FileName>
               <io:ListSeparator>;</io:ListSeparator>
               <io:Append>false</io:Append>
               <io:Overwrite>false</io:Overwrite>
@@ -880,7 +880,7 @@ def process(value):
             </Expression>
             <Expression xsi:type="Combinator">
               <Combinator xsi:type="cv:VideoWriter">
-                <cv:FileName>D:\Ben\FVB_awake\test_10_11_2021_100FPS_Face.avi</cv:FileName>
+                <cv:FileName>D:\Ben\161121\FVB105__16_11_2021_100FPS_Face.avi</cv:FileName>
                 <cv:Suffix>Timestamp</cv:Suffix>
                 <cv:Buffered>true</cv:Buffered>
                 <cv:Overwrite>false</cv:Overwrite>
@@ -1150,7 +1150,7 @@ def process(value):
                         </Expression>
                         <Expression xsi:type="Multiply">
                           <Operand xsi:type="IntProperty">
-                            <Value>2</Value>
+                            <Value>15</Value>
                           </Operand>
                         </Expression>
                         <Expression xsi:type="PropertyMapping">
@@ -1160,7 +1160,7 @@ def process(value):
                         </Expression>
                         <Expression xsi:type="Add">
                           <Operand xsi:type="IntProperty">
-                            <Value>1800</Value>
+                            <Value>25200</Value>
                           </Operand>
                         </Expression>
                         <Expression xsi:type="PropertyMapping">
@@ -1180,7 +1180,7 @@ def process(value):
                               <Expression xsi:type="Combinator">
                                 <Combinator xsi:type="dsp:FunctionGenerator">
                                   <dsp:BufferLength>500</dsp:BufferLength>
-                                  <dsp:Frequency>5800</dsp:Frequency>
+                                  <dsp:Frequency>29200</dsp:Frequency>
                                   <dsp:Waveform>Sine</dsp:Waveform>
                                   <dsp:SampleRate>250000</dsp:SampleRate>
                                   <dsp:Amplitude>0.01</dsp:Amplitude>
@@ -2194,7 +2194,7 @@ Starts a protocol of auditory stimulation to determine "Evoked" response</Descri
                         </Expression>
                         <Expression xsi:type="Multiply">
                           <Operand xsi:type="IntProperty">
-                            <Value>11</Value>
+                            <Value>15</Value>
                           </Operand>
                         </Expression>
                         <Expression xsi:type="PropertyMapping">
@@ -2204,7 +2204,7 @@ Starts a protocol of auditory stimulation to determine "Evoked" response</Descri
                         </Expression>
                         <Expression xsi:type="Add">
                           <Operand xsi:type="IntProperty">
-                            <Value>18000</Value>
+                            <Value>25200</Value>
                           </Operand>
                         </Expression>
                         <Expression xsi:type="PropertyMapping">
@@ -2224,7 +2224,7 @@ Starts a protocol of auditory stimulation to determine "Evoked" response</Descri
                               <Expression xsi:type="Combinator">
                                 <Combinator xsi:type="dsp:FunctionGenerator">
                                   <dsp:BufferLength>500</dsp:BufferLength>
-                                  <dsp:Frequency>22000</dsp:Frequency>
+                                  <dsp:Frequency>29200</dsp:Frequency>
                                   <dsp:Waveform>Sine</dsp:Waveform>
                                   <dsp:SampleRate>250000</dsp:SampleRate>
                                   <dsp:Amplitude>0.01</dsp:Amplitude>
@@ -2329,7 +2329,7 @@ Starts a protocol of auditory stimulation to determine "Evoked" response</Descri
                         </Expression>
                         <Expression xsi:type="Multiply">
                           <Operand xsi:type="DoubleProperty">
-                            <Value>50</Value>
+                            <Value>20</Value>
                           </Operand>
                         </Expression>
                         <Expression xsi:type="Combinator">
@@ -2634,7 +2634,7 @@ Starts a protocol of auditory stimulation to determine "Evoked" response</Descri
       </Expression>
       <Expression xsi:type="PropertySource" TypeArguments="cv:VideoWriter,sys:String">
         <MemberName>FileName</MemberName>
-        <Value>D:\Ben\FVB_awake\test</Value>
+        <Value>D:\Ben\161121\FVB106_757_</Value>
       </Expression>
       <Expression xsi:type="BehaviorSubject">
         <Name>Direct</Name>
