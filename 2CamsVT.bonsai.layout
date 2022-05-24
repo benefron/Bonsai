@@ -5,8 +5,8 @@
   <DialogSettings xsi:type="WorkflowEditorSettings">
     <Visible>true</Visible>
     <Location>
-      <X>179</X>
-      <Y>1075</Y>
+      <X>176</X>
+      <Y>644</Y>
     </Location>
     <Size>
       <Width>753</Width>
@@ -670,12 +670,12 @@
   <DialogSettings xsi:type="WorkflowEditorSettings">
     <Visible>true</Visible>
     <Location>
-      <X>260</X>
-      <Y>260</Y>
+      <X>455</X>
+      <Y>324</Y>
     </Location>
     <Size>
-      <Width>611</Width>
-      <Height>519</Height>
+      <Width>336</Width>
+      <Height>279</Height>
     </Size>
     <WindowState>Normal</WindowState>
     <VisualizerTypeName>Bonsai.Vision.Design.IplImageVisualizer</VisualizerTypeName>

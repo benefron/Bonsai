@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<WorkflowBuilder Version="2.6.0"
+<WorkflowBuilder Version="2.6.3"
                  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
                  xmlns:rx="clr-namespace:Bonsai.Reactive;assembly=Bonsai.Core"
                  xmlns:wie="clr-namespace:Bonsai.Windows.Input;assembly=Bonsai.Windows.Input"
@@ -429,10 +429,10 @@
       <Expression xsi:type="Combinator">
         <Combinator xsi:type="cv:Crop">
           <cv:RegionOfInterest>
-            <cv:X>129</cv:X>
-            <cv:Y>5</cv:Y>
-            <cv:Width>189</cv:Width>
-            <cv:Height>475</cv:Height>
+            <cv:X>84</cv:X>
+            <cv:Y>197</cv:Y>
+            <cv:Width>535</cv:Width>
+            <cv:Height>119</cv:Height>
           </cv:RegionOfInterest>
         </Combinator>
       </Expression>
@@ -453,56 +453,56 @@
           <cv:Regions>
             <cv:ArrayOfPoint>
               <cv:Point>
-                <cv:X>31</cv:X>
-                <cv:Y>41</cv:Y>
+                <cv:X>443</cv:X>
+                <cv:Y>35</cv:Y>
               </cv:Point>
               <cv:Point>
-                <cv:X>149</cv:X>
-                <cv:Y>41</cv:Y>
+                <cv:X>407</cv:X>
+                <cv:Y>35</cv:Y>
               </cv:Point>
               <cv:Point>
-                <cv:X>149</cv:X>
-                <cv:Y>185</cv:Y>
+                <cv:X>407</cv:X>
+                <cv:Y>107</cv:Y>
               </cv:Point>
               <cv:Point>
-                <cv:X>31</cv:X>
-                <cv:Y>185</cv:Y>
-              </cv:Point>
-            </cv:ArrayOfPoint>
-            <cv:ArrayOfPoint>
-              <cv:Point>
-                <cv:X>24</cv:X>
-                <cv:Y>240</cv:Y>
-              </cv:Point>
-              <cv:Point>
-                <cv:X>153</cv:X>
-                <cv:Y>240</cv:Y>
-              </cv:Point>
-              <cv:Point>
-                <cv:X>153</cv:X>
-                <cv:Y>293</cv:Y>
-              </cv:Point>
-              <cv:Point>
-                <cv:X>24</cv:X>
-                <cv:Y>293</cv:Y>
+                <cv:X>443</cv:X>
+                <cv:Y>107</cv:Y>
               </cv:Point>
             </cv:ArrayOfPoint>
             <cv:ArrayOfPoint>
               <cv:Point>
-                <cv:X>25</cv:X>
-                <cv:Y>316</cv:Y>
+                <cv:X>209</cv:X>
+                <cv:Y>31</cv:Y>
               </cv:Point>
               <cv:Point>
-                <cv:X>160</cv:X>
-                <cv:Y>316</cv:Y>
+                <cv:X>250</cv:X>
+                <cv:Y>31</cv:Y>
               </cv:Point>
               <cv:Point>
-                <cv:X>160</cv:X>
-                <cv:Y>453</cv:Y>
+                <cv:X>250</cv:X>
+                <cv:Y>107</cv:Y>
               </cv:Point>
               <cv:Point>
-                <cv:X>25</cv:X>
-                <cv:Y>453</cv:Y>
+                <cv:X>209</cv:X>
+                <cv:Y>107</cv:Y>
+              </cv:Point>
+            </cv:ArrayOfPoint>
+            <cv:ArrayOfPoint>
+              <cv:Point>
+                <cv:X>81</cv:X>
+                <cv:Y>27</cv:Y>
+              </cv:Point>
+              <cv:Point>
+                <cv:X>133</cv:X>
+                <cv:Y>27</cv:Y>
+              </cv:Point>
+              <cv:Point>
+                <cv:X>133</cv:X>
+                <cv:Y>107</cv:Y>
+              </cv:Point>
+              <cv:Point>
+                <cv:X>81</cv:X>
+                <cv:Y>107</cv:Y>
               </cv:Point>
             </cv:ArrayOfPoint>
           </cv:Regions>
@@ -1152,7 +1152,7 @@
       </Expression>
       <Expression xsi:type="PropertySource" TypeArguments="ard:DigitalOutput,sys:String">
         <MemberName>PortName</MemberName>
-        <Value>COM5</Value>
+        <Value>COM7</Value>
       </Expression>
       <Expression xsi:type="PropertyMapping">
         <PropertyMappings>
@@ -1192,7 +1192,7 @@ def process(value):
             </Expression>
             <Expression xsi:type="PropertySource" TypeArguments="ard:DigitalOutput,sys:String">
               <MemberName>PortName</MemberName>
-              <Value>COM5</Value>
+              <Value>COM7</Value>
             </Expression>
             <Expression xsi:type="BehaviorSubject">
               <Name>port</Name>
@@ -1209,7 +1209,7 @@ def process(value):
             </Expression>
             <Expression xsi:type="Combinator">
               <Combinator xsi:type="ard:DigitalOutput">
-                <ard:PortName>COM5</ard:PortName>
+                <ard:PortName>COM7</ard:PortName>
                 <ard:Pin>3</ard:Pin>
               </Combinator>
             </Expression>
@@ -1221,7 +1221,7 @@ def process(value):
             </Expression>
             <Expression xsi:type="Combinator">
               <Combinator xsi:type="ard:DigitalOutput">
-                <ard:PortName>COM5</ard:PortName>
+                <ard:PortName>COM7</ard:PortName>
                 <ard:Pin>3</ard:Pin>
               </Combinator>
             </Expression>
@@ -1237,7 +1237,7 @@ def process(value):
             </Expression>
             <Expression xsi:type="Combinator">
               <Combinator xsi:type="ard:DigitalOutput">
-                <ard:PortName>COM5</ard:PortName>
+                <ard:PortName>COM7</ard:PortName>
                 <ard:Pin>2</ard:Pin>
               </Combinator>
             </Expression>
@@ -1254,7 +1254,7 @@ def process(value):
             </Expression>
             <Expression xsi:type="Combinator">
               <Combinator xsi:type="ard:DigitalOutput">
-                <ard:PortName>COM5</ard:PortName>
+                <ard:PortName>COM7</ard:PortName>
                 <ard:Pin>2</ard:Pin>
               </Combinator>
             </Expression>
@@ -1304,6 +1304,104 @@ def process(value):
       </Expression>
       <Expression xsi:type="BehaviorSubject">
         <Name>FileName</Name>
+      </Expression>
+      <Expression xsi:type="GroupWorkflow">
+        <Name>Water reward</Name>
+        <Workflow>
+          <Nodes>
+            <Expression xsi:type="SubscribeSubject">
+              <Name>crossed</Name>
+            </Expression>
+            <Expression xsi:type="scr:PythonTransform">
+              <scr:Script>@returns(bool)
+def process(value):
+  if value[0] == 'H':
+    return True</scr:Script>
+            </Expression>
+            <Expression xsi:type="Combinator">
+              <Combinator xsi:type="rx:Skip">
+                <rx:Count>1</rx:Count>
+              </Combinator>
+            </Expression>
+            <Expression xsi:type="PublishSubject">
+              <Name>Water</Name>
+            </Expression>
+            <Expression xsi:type="SubscribeSubject">
+              <Name>Water</Name>
+            </Expression>
+            <Expression xsi:type="Condition">
+              <Workflow>
+                <Nodes>
+                  <Expression xsi:type="WorkflowInput">
+                    <Name>Source1</Name>
+                  </Expression>
+                  <Expression xsi:type="WorkflowOutput" />
+                </Nodes>
+                <Edges>
+                  <Edge From="0" To="1" Label="Source1" />
+                </Edges>
+              </Workflow>
+            </Expression>
+            <Expression xsi:type="Combinator">
+              <Combinator xsi:type="rx:Throttle">
+                <rx:DueTime>PT3S</rx:DueTime>
+              </Combinator>
+            </Expression>
+            <Expression xsi:type="SelectMany">
+              <Name>Wait for lick</Name>
+              <Workflow>
+                <Nodes>
+                  <Expression xsi:type="Disable">
+                    <Builder xsi:type="WorkflowOutput" />
+                  </Expression>
+                  <Expression xsi:type="Combinator">
+                    <Combinator xsi:type="wie:KeyDown">
+                      <wie:Filter>E</wie:Filter>
+                      <wie:SuppressRepetitions>false</wie:SuppressRepetitions>
+                    </Combinator>
+                  </Expression>
+                  <Expression xsi:type="Combinator">
+                    <Combinator xsi:type="rx:Take">
+                      <rx:Count>1</rx:Count>
+                    </Combinator>
+                  </Expression>
+                  <Expression xsi:type="SelectMany">
+                    <Name>Give reward</Name>
+                    <Workflow>
+                      <Nodes>
+                        <Expression xsi:type="WorkflowInput">
+                          <Name>Source1</Name>
+                        </Expression>
+                        <Expression xsi:type="Combinator">
+                          <Combinator xsi:type="StringProperty">
+                            <Value>Water reward</Value>
+                          </Combinator>
+                        </Expression>
+                        <Expression xsi:type="WorkflowOutput" />
+                      </Nodes>
+                      <Edges>
+                        <Edge From="0" To="1" Label="Source1" />
+                        <Edge From="1" To="2" Label="Source1" />
+                      </Edges>
+                    </Workflow>
+                  </Expression>
+                </Nodes>
+                <Edges>
+                  <Edge From="1" To="2" Label="Source1" />
+                  <Edge From="2" To="3" Label="Source1" />
+                </Edges>
+              </Workflow>
+            </Expression>
+          </Nodes>
+          <Edges>
+            <Edge From="0" To="1" Label="Source1" />
+            <Edge From="1" To="2" Label="Source1" />
+            <Edge From="2" To="3" Label="Source1" />
+            <Edge From="4" To="5" Label="Source1" />
+            <Edge From="5" To="6" Label="Source1" />
+            <Edge From="6" To="7" Label="Source1" />
+          </Edges>
+        </Workflow>
       </Expression>
     </Nodes>
     <Edges>
