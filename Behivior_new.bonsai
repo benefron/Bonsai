@@ -49,7 +49,7 @@
             </Expression>
             <Expression xsi:type="Combinator">
               <Combinator xsi:type="IntProperty">
-                <Value>1</Value>
+                <Value>0</Value>
               </Combinator>
             </Expression>
             <Expression xsi:type="BehaviorSubject">
@@ -65,7 +65,7 @@
             </Expression>
             <Expression xsi:type="Combinator">
               <Combinator xsi:type="DoubleProperty">
-                <Value>0.2</Value>
+                <Value>0.5</Value>
               </Combinator>
             </Expression>
             <Expression xsi:type="BehaviorSubject">
@@ -204,7 +204,7 @@
             </Expression>
             <Expression xsi:type="Combinator">
               <Combinator xsi:type="IntProperty">
-                <Value>1</Value>
+                <Value>0</Value>
               </Combinator>
             </Expression>
             <Expression xsi:type="MulticastSubject">
@@ -212,7 +212,7 @@
             </Expression>
             <Expression xsi:type="Combinator">
               <Combinator xsi:type="DoubleProperty">
-                <Value>0.2</Value>
+                <Value>0.5</Value>
               </Combinator>
             </Expression>
             <Expression xsi:type="MulticastSubject">
@@ -1036,11 +1036,6 @@ def process(value):
                 <Property Name="Period" />
               </PropertyMappings>
             </Expression>
-            <Expression xsi:type="PropertyMapping">
-              <PropertyMappings>
-                <Property Name="Interval" />
-              </PropertyMappings>
-            </Expression>
             <Expression xsi:type="WorkflowInput">
               <Name>Source1</Name>
             </Expression>
@@ -1080,7 +1075,7 @@ def process(value):
                   </Expression>
                   <Expression xsi:type="Combinator">
                     <Combinator xsi:type="p1:CreateBinomial">
-                      <p1:P>0.2</p1:P>
+                      <p1:P>0.5</p1:P>
                       <p1:N>1</p1:N>
                     </Combinator>
                   </Expression>
@@ -1204,18 +1199,10 @@ def process(value):
                   <Expression xsi:type="Combinator">
                     <Combinator xsi:type="rx:TakeUntil" />
                   </Expression>
-                  <Expression xsi:type="WorkflowOutput" />
-                  <Expression xsi:type="ExternalizedMapping">
-                    <Property Name="Interval" />
-                  </Expression>
-                  <Expression xsi:type="Combinator">
-                    <Combinator xsi:type="rx:SampleInterval">
-                      <rx:Interval>PT3S</rx:Interval>
-                    </Combinator>
-                  </Expression>
                   <Expression xsi:type="MulticastSubject">
                     <Name>Events</Name>
                   </Expression>
+                  <Expression xsi:type="WorkflowOutput" />
                 </Nodes>
                 <Edges>
                   <Edge From="0" To="4" Label="Source2" />
@@ -1234,11 +1221,9 @@ def process(value):
                   <Edge From="11" To="13" Label="Source2" />
                   <Edge From="12" To="13" Label="Source3" />
                   <Edge From="13" To="15" Label="Source1" />
-                  <Edge From="13" To="18" Label="Source1" />
                   <Edge From="14" To="15" Label="Source2" />
                   <Edge From="15" To="16" Label="Source1" />
-                  <Edge From="17" To="18" Label="Source2" />
-                  <Edge From="18" To="19" Label="Source1" />
+                  <Edge From="16" To="17" Label="Source1" />
                 </Edges>
               </Workflow>
             </Expression>
@@ -1246,14 +1231,12 @@ def process(value):
           </Nodes>
           <Edges>
             <Edge From="0" To="1" Label="Source1" />
-            <Edge From="1" To="7" Label="Source2" />
+            <Edge From="1" To="6" Label="Source2" />
             <Edge From="2" To="3" Label="Source1" />
-            <Edge From="2" To="4" Label="Source1" />
-            <Edge From="3" To="7" Label="Source3" />
-            <Edge From="4" To="7" Label="Source4" />
+            <Edge From="3" To="6" Label="Source3" />
+            <Edge From="4" To="5" Label="Source1" />
             <Edge From="5" To="6" Label="Source1" />
             <Edge From="6" To="7" Label="Source1" />
-            <Edge From="7" To="8" Label="Source1" />
           </Edges>
         </Workflow>
       </Expression>
@@ -1416,7 +1399,7 @@ def process(value):
                         </Expression>
                         <Expression xsi:type="Combinator">
                           <Combinator xsi:type="p1:CreateBinomial">
-                            <p1:P>0.2</p1:P>
+                            <p1:P>0.5</p1:P>
                             <p1:N>1</p1:N>
                           </Combinator>
                         </Expression>
