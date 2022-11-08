@@ -302,7 +302,7 @@
             </Expression>
             <Expression xsi:type="Combinator">
               <Combinator xsi:type="StringProperty">
-                <Value>FVB101</Value>
+                <Value>FVB102</Value>
               </Combinator>
             </Expression>
             <Expression xsi:type="BehaviorSubject">
@@ -350,7 +350,7 @@
                   <Expression xsi:type="Combinator">
                     <Combinator xsi:type="io:EnumerateDirectories">
                       <io:Path>E:\Ben\Dis</io:Path>
-                      <io:SearchPattern>FVB101</io:SearchPattern>
+                      <io:SearchPattern>FVB102</io:SearchPattern>
                       <io:SearchOption>TopDirectoryOnly</io:SearchOption>
                     </Combinator>
                   </Expression>
@@ -443,7 +443,7 @@
                     </PropertyMappings>
                   </Expression>
                   <Expression xsi:type="io:CsvReader">
-                    <io:FileName>E:\Ben\Dis\FVB101\events_Settings.csv</io:FileName>
+                    <io:FileName>E:\Ben\Dis\FVB102\events_Settings.csv</io:FileName>
                     <io:ListSeparator>,</io:ListSeparator>
                     <io:ScanPattern />
                     <io:SkipRows>0</io:SkipRows>
@@ -756,7 +756,7 @@ def process(value):
               </PropertyMappings>
             </Expression>
             <Expression xsi:type="io:CsvWriter">
-              <io:FileName>E:\Ben\Dis\FVB101\events.csv</io:FileName>
+              <io:FileName>E:\Ben\Dis\FVB102\events.csv</io:FileName>
               <io:Delimiter>,</io:Delimiter>
               <io:ListSeparator />
               <io:Append>true</io:Append>
@@ -1491,11 +1491,13 @@ def process(value):
       <Expression xsi:type="GroupWorkflow">
         <Workflow>
           <Nodes>
-            <Expression xsi:type="Combinator">
-              <Combinator xsi:type="ard:AnalogInput">
-                <ard:PortName>COM12</ard:PortName>
-                <ard:Pin>2</ard:Pin>
-              </Combinator>
+            <Expression xsi:type="Disable">
+              <Builder xsi:type="Combinator">
+                <Combinator xsi:type="ard:AnalogInput">
+                  <ard:PortName>COM12</ard:PortName>
+                  <ard:Pin>2</ard:Pin>
+                </Combinator>
+              </Builder>
             </Expression>
           </Nodes>
           <Edges />
